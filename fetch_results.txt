@@ -1,0 +1,7 @@
+node_modules/three/build/three.module.js:5952:function fetchAttributeLocations( gl, program ) {
+node_modules/three/src/renderers/webgl/WebGLProgram.js:197:function fetchAttributeLocations( gl, program ) {
+node_modules/esbuild/install.js:146:function fetch(url) {
+node_modules/stats-gl/node_modules/three/build/three.module.js:19597:function fetchAttributeLocations( gl, program ) {
+node_modules/stats-gl/node_modules/three/src/renderers/webgl/WebGLProgram.js:194:function fetchAttributeLocations( gl, program ) {
+node_modules/.vite/deps/chunk-C43FICMT.js:27545:function fetchSupported() {
+node_modules/.vite/deps/chunk-NXDLDOYD.js:35692:function fetchAttributeLocations(gl, program) {

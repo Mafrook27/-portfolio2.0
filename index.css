@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "IBM Plex Serif", serif;
+  --font-sans: "IBM Plex Sans", sans-serif;
+  --color-nobel-gold: #C5A059;
+  --color-nobel-dark: #1a1a1a;
+  --color-nobel-cream: #F9F8F4;
+}
+
+html, body {
+  font-family: var(--font-sans);
+}
