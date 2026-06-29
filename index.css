@@ -12,3 +12,58 @@
 html, body {
   font-family: var(--font-sans);
 }
+
+/* Claymorphism Light Card style */
+.clay-card {
+  background: #ffffff;
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 
+    8px 8px 16px rgba(165, 163, 150, 0.12),
+    -8px -8px 16px rgba(255, 255, 255, 0.9),
+    inset -4px -4px 10px rgba(0, 0, 0, 0.02),
+    inset 4px 4px 10px rgba(255, 255, 255, 0.85);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.clay-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    12px 12px 24px rgba(165, 163, 150, 0.18),
+    -12px -12px 24px rgba(255, 255, 255, 1),
+    inset -2px -2px 6px rgba(0, 0, 0, 0.01),
+    inset 2px 2px 6px rgba(255, 255, 255, 0.95);
+  border-color: rgba(197, 160, 89, 0.35);
+}
+
+/* Claymorphism Stats bubble or small tag style */
+.clay-bubble {
+  background: #fdfdfb;
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 
+    4px 4px 8px rgba(165, 163, 150, 0.08),
+    -4px -4px 8px rgba(255, 255, 255, 0.8),
+    inset -3px -3px 6px rgba(0, 0, 0, 0.01),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.8);
+}
+
+/* Claymorphism Dark Card style (for dark themed elements, e.g. Milestones) */
+.clay-card-dark {
+  background: #121212;
+  border: 1.5px solid rgba(255, 255, 255, 0.03);
+  box-shadow: 
+    8px 8px 20px rgba(0, 0, 0, 0.4),
+    -8px -8px 20px rgba(255, 255, 255, 0.02),
+    inset -6px -6px 15px rgba(0, 0, 0, 0.25),
+    inset 6px 6px 15px rgba(255, 255, 255, 0.04);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.clay-card-dark:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    12px 12px 28px rgba(0, 0, 0, 0.5),
+    -12px -12px 28px rgba(255, 255, 255, 0.03),
+    inset -4px -4px 10px rgba(0, 0, 0, 0.15),
+    inset 4px 4px 10px rgba(255, 255, 255, 0.06);
+  border-color: rgba(197, 160, 89, 0.45);
+}
