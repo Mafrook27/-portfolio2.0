@@ -13,8 +13,6 @@ interface SkillTagProps {
 }
 
 export const SkillTag: React.FC<SkillTagProps> = ({ skill, idx, parentIdx }) => {
-  const [hovered, setHovered] = useState(false);
-
   // Dynamic progressive stagger delay
   const tagDelay = (idx * 40);
 
@@ -27,13 +25,12 @@ export const SkillTag: React.FC<SkillTagProps> = ({ skill, idx, parentIdx }) => 
     >
       <motion.div 
         className="group/tag flex items-center gap-2.5 md:gap-3 px-3 py-2.5 md:px-5 md:py-3 rounded-xl md:rounded-2xl transition-all duration-300 w-full h-full cursor-pointer select-none clay-bubble hover:clay-card"
-        whileTap={{ scale: 0.96 }}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-        style={{ 
-          borderColor: hovered ? `${skill.color}50` : undefined,
-          backgroundColor: hovered ? `${skill.color}05` : undefined
+        whileHover={{ 
+          scale: 1.02,
+          borderColor: `${skill.color}50`,
+          backgroundColor: `${skill.color}05`
         }}
+        whileTap={{ scale: 0.96 }}
       >
         <div 
           className="w-8 h-8 md:w-10 md:h-10 shrink-0 rounded-full flex items-center justify-center transition-colors duration-300"
