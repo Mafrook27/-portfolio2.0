@@ -50,17 +50,18 @@ const AppContent = () => {
 
   // Scroll triggers and Animation initialization
   useEffect(() => {
+    const isMobileDevice = window.innerWidth < 768;
     if (ecoMode) {
       AOS.init({
         disable: true
       });
     } else {
       AOS.init({
-        duration: 1100,
+        duration: isMobileDevice ? 800 : 1100,
         once: false, // Animates on scroll down AND scroll up
         mirror: false, // Prevents chaotic double-triggers when scrolling past
         easing: 'ease-out-quint', // Highly premium custom deceleration curve
-        offset: 100, // Triggers gracefully when element is slightly inside viewport
+        offset: isMobileDevice ? 20 : 80, // Snappy on mobile, elegant on desktop
         disable: false
       });
       AOS.refresh();
