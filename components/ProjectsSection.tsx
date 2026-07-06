@@ -12,50 +12,36 @@ export const ProjectsSection: React.FC = () => {
     if (language === 'de') {
       return [
         {
+          title: "html-formeditor [opensrc]",
+          desc: "Ein benutzerdefinierter, visueller Editor im Canvas-Stil, der von Grund auf neu entwickelt wurde, um offizielle Unternehmensdokumente und E-Mail-Vorlagen zu erstellen und zu verwalten. Bietet eine intuitive Drag-and-Drop-Schnittstelle unter Verwendung von shadcn/ui und Tailwind CSS, ohne Abhängigkeiten von Drittanbieter-Buildern, und gewährleistet strikte Typsicherheit durch TypeScript.",
+          github: "https://github.com/Mafrook27",
+          technologies: ["React.js", "shadcn", "tailwind", "typescript"],
+          icon: projects[0]?.icon || Code2
+        },
+        {
           title: "AccessVault - Rollenbasiertes Anmeldedaten-Verwaltungssystem",
-          desc: "Ein sicheres Ökosystem für Anmeldedaten, das die Ebenen Admin, Manager und Viewer unterstützt. Bietet robuste JWT-Authentifizierung, bcrypt-Passwort-Hashing und umfassende Express-basierte REST-APIs mit datenbankintegrierten Validierungsschemata unter Verwendung von Mongoose/MongoDB.",
+          desc: "Eine sichere Anwendung zur Verwaltung von Anmeldedaten mit rollenbasiertem Zugriff für Admin-, Manager- und Viewer-Benutzer. Implementierung von JWT-Authentifizierung und bcrypt-Passwort-Hashing, Entwurf von MongoDB-Schemata mit Validierungsregeln und Erstellung von REST-APIs mit Audit-Protokollierungsfunktionen.",
           github: "https://github.com/Mafrook27",
-          technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "Mongoose", "JWT", "bcrypt"],
-          icon: projects[0].icon
-        },
-        {
-          title: "Kredit-Workflow-Plattform (Statlight)",
-          desc: "Interaktive, für Administratoren konzipierte Arbeitsabläufe zur Verwaltung von Kreditantrags-Tracking und Zustandsautomaten (Ausstehend, Genehmigt, Abgelehnt, Geschlossen). Entwicklung wiederverwendbarer modularer Komponenten und optimierte Synchronisation des UI-Zustands über den React Query-Caching-Layer.",
-          github: "https://github.com/Mafrook27",
-          technologies: ["React.js", "React Query", "REST API", "Tailwind CSS", "MERN Stack"],
-          icon: projects[1].icon
-        },
-        {
-          title: "Banksystem & Gesichtsanmeldung",
-          desc: "Ein sicheres Portal für Electronic Banking, entwickelt mit Python, Flask und OpenCV für Vorlagen zur Gesichtserkennung bei der Anmeldung, datenbankgesteuerten Pipelines zur Kontostandaktualisierung und einem strukturierten Transaktionsspeicherlayout unter MySQL.",
-          github: "https://github.com/Mafrook27",
-          technologies: ["Python", "Flask", "OpenCV", "MySQL", "HTML/CSS"],
-          icon: projects[2].icon
+          technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT", "bcrypt"],
+          icon: projects[1]?.icon || Code2
         }
       ];
     }
     if (language === 'ar') {
       return [
         {
+          title: "html-formeditor [opensrc]",
+          desc: "محرر مرئي مخصص بأسلوب الكانفاس تم بناؤه من الصفر لإنشاء وإدارة مستندات الشركة الرسمية وقوالب البريد الإلكتروني. يتميز بواجهة سحب وإفلات بديهية تعتمد على shadcn/ui و Tailwind CSS، مما يلغي الاعتماد على حزم البناء الخارجية، مع ضمان أمان كامل للأنواع باستخدام TypeScript.",
+          github: "https://github.com/Mafrook27",
+          technologies: ["React.js", "shadcn", "tailwind", "typescript"],
+          icon: projects[0]?.icon || Code2
+        },
+        {
           title: "AccessVault - نظام إدارة الاعتمادات والصلاحيات",
-          desc: "نظام آمن لإدارة بيانات الاعتماد يدعم مستويات الصلاحيات: مدير النظام (Admin)، مدير العمليات (Manager)، والمشاهد (Viewer). يتميز بمصادقة JWT قوية، وتشفير كلمات المرور عبر bcrypt، وواجهات REST APIs شاملة مبنية على Express مع مخططات تحقق مدمجة في قاعدة بيانات Mongoose/MongoDB.",
+          desc: "تطبيق آمن لإدارة بيانات الاعتماد مع وصول قائم على الأدوار للمستخدمين من فئات المسؤول والمدير والمشاهد. تم تنفيذ مصادقة JWT وتشفير كلمات المرور عبر bcrypt، وتصميم مخططات MongoDB مع قواعد التحقق، وبناء واجهات REST APIs مع ميزات تسجيل تدقيق الحسابات.",
           github: "https://github.com/Mafrook27",
-          technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "Mongoose", "JWT", "bcrypt"],
-          icon: projects[0].icon
-        },
-        {
-          title: "منصة تدفقات قروض الائتمان (Statlight)",
-          desc: "واجهات عمل تفاعلية موجهة للمسؤولين لإدارة تتبع طلبات القروض وآلات الحالة (قيد الانتظار، مقبول، مرفوض، مغلق). تم بناء مكونات برمجية مخصصة قابلة لإعادة الاستخدام مع تحسين مزامنة حالة واجهة المستخدم باستخدام طبقة التخزين المؤقت في React Query.",
-          github: "https://github.com/Mafrook27",
-          technologies: ["React.js", "React Query", "REST API", "Tailwind CSS", "MERN Stack"],
-          icon: projects[1].icon
-        },
-        {
-          title: "النظام المصرفي والولوج بالتعرف على الوجه",
-          desc: "بوابة مصرفية إلكترونية آمنة تم تطويرها باستخدام لغة Python و Flask و OpenCV لإنشاء قوالب تسجيل دخول ذكية تعتمد على التعرف على الوجه، بالإضافة إلى تدفقات تحديث الأرصدة مدفوعة بقواعد البيانات، ومخطط تخزين معاملات منظم وقوي باستخدام MySQL.",
-          github: "https://github.com/Mafrook27",
-          technologies: ["Python", "Flask", "OpenCV", "MySQL", "HTML/CSS"],
-          icon: projects[2].icon
+          technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT", "bcrypt"],
+          icon: projects[1]?.icon || Code2
         }
       ];
     }

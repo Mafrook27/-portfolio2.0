@@ -74,7 +74,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
               
               {/* Bento Grid Stats block */}
               <div className="grid grid-cols-3 gap-2.5 w-full border-t border-stone-100 pt-5 mt-6 mb-6 z-10">
-                <div className="clay-bubble rounded-2xl py-3.5 px-1.5 group/stat hover:border-[#bf9d55]/30 hover:scale-[1.05] transition-all duration-300 flex flex-col items-center justify-center">
+                <div className="clay-bubble rounded-2xl py-3.5 px-1.5 group/stat hover:border-[#bf9d55]/30 hover:scale-[1.05] active:scale-95 transition-all duration-300 flex flex-col items-center justify-center cursor-pointer select-none">
                   <p className="font-serif font-black text-[#bf9d55] text-sm sm:text-base leading-none">
                     {totalExp.years} {t.expYears}
                   </p>
@@ -82,13 +82,13 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                     {isRtl ? 'الخبرة' : 'Experience'}
                   </p>
                 </div>
-                <div className="clay-bubble rounded-2xl py-3.5 px-1.5 group/stat hover:border-[#bf9d55]/30 hover:scale-[1.05] transition-all duration-300 flex flex-col items-center justify-center">
+                <div className="clay-bubble rounded-2xl py-3.5 px-1.5 group/stat hover:border-[#bf9d55]/30 hover:scale-[1.05] active:scale-95 transition-all duration-300 flex flex-col items-center justify-center cursor-pointer select-none">
                   <p className="font-serif font-black text-[#bf9d55] text-sm sm:text-base leading-none">MERN</p>
                   <p className="text-[8px] text-stone-400 uppercase tracking-widest font-bold mt-2 text-center">
                     {isRtl ? 'التقنيات' : 'Core Stack'}
                   </p>
                 </div>
-                <div className="clay-bubble rounded-2xl py-3.5 px-1.5 group/stat hover:border-[#bf9d55]/30 hover:scale-[1.05] transition-all duration-300 flex flex-col items-center justify-center">
+                <div className="clay-bubble rounded-2xl py-3.5 px-1.5 group/stat hover:border-[#bf9d55]/30 hover:scale-[1.05] active:scale-95 transition-all duration-300 flex flex-col items-center justify-center cursor-pointer select-none">
                   <p className="font-serif font-black text-[#bf9d55] text-sm sm:text-base leading-none">TS / JS</p>
                   <p className="text-[8px] text-stone-400 uppercase tracking-widest font-bold mt-2 text-center">
                     {isRtl ? 'اللغة' : 'Language'}
@@ -102,7 +102,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                 <div className="grid grid-cols-2 gap-2">
                   <button 
                     onClick={() => setIsResumeOpen(true)}
-                    className="py-2.5 bg-stone-900 hover:bg-stone-800 text-white font-sans font-semibold text-[10px] sm:text-xs rounded-xl tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-1.5 group/btn shadow-sm hover:shadow cursor-pointer"
+                    className="py-2.5 bg-stone-900 hover:bg-stone-800 active:scale-95 active:bg-stone-950 text-white font-sans font-semibold text-[10px] sm:text-xs rounded-xl tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-1.5 group/btn shadow-sm hover:shadow cursor-pointer select-none"
                   >
                     <FileText size={12} className="text-[#bf9d55] group-hover/btn:scale-105 transition-transform duration-300" />
                     <span>{t.resume}</span>
@@ -111,7 +111,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                   <a 
                     href="/resume.pdf" 
                     download="Mafrook_Kuthpudeen_Resume.pdf"
-                    className="py-2.5 bg-white border border-stone-200 hover:border-stone-400 text-stone-700 hover:text-stone-900 font-sans font-semibold text-[10px] sm:text-xs rounded-xl tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-1.5 group/down hover:shadow-sm"
+                    className="py-2.5 bg-white border border-stone-200 hover:border-stone-400 active:scale-95 active:bg-stone-50 text-stone-700 hover:text-stone-900 font-sans font-semibold text-[10px] sm:text-xs rounded-xl tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-1.5 group/down hover:shadow-sm select-none"
                   >
                     <Download size={12} className="text-[#bf9d55] group-hover/down:translate-y-0.5 transition-transform duration-300" />
                     <span>Resume (PDF)</span>
@@ -121,7 +121,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                 {/* Secondary copy action */}
                 <button 
                   onClick={handleCopyEmail}
-                  className="w-full py-2 bg-transparent border border-dashed border-stone-200 hover:border-[#bf9d55]/40 hover:bg-[#bf9d55]/5 text-stone-600 hover:text-[#bf9d55] font-sans font-semibold text-[10px] rounded-xl tracking-wider uppercase transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full py-2 bg-transparent border border-dashed border-stone-200 hover:border-[#bf9d55]/40 hover:bg-[#bf9d55]/5 active:scale-[0.98] active:bg-[#bf9d55]/10 text-stone-600 hover:text-[#bf9d55] font-sans font-semibold text-[10px] rounded-xl tracking-wider uppercase transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer select-none"
                 >
                   {copiedEmail ? <Check size={11} className="text-green-600" /> : <Mail size={11} className="text-stone-400" />}
                   <span>{copiedEmail ? t.emailCopied : t.copyEmail}</span>
@@ -145,11 +145,13 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
 
             {/* Highly efficient high-impact summary metric list with internal staggering */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
-              <div 
+              <motion.div 
                 data-aos="fade-up"
                 data-aos-delay="350"
                 data-aos-duration="800"
-                className="group clay-card p-5 rounded-2xl cursor-pointer"
+                className="group clay-card p-5 rounded-2xl cursor-pointer select-none"
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.97 }}
               >
                 <div className="w-9 h-9 rounded-xl bg-[#bf9d55]/10 border border-[#bf9d55]/20 flex items-center justify-center text-[#bf9d55] shadow-sm mb-4 group-hover:scale-105 transition-transform">
                   <Terminal size={16} />
@@ -158,13 +160,15 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                 <p className="text-stone-500 text-xs mt-1.5 leading-relaxed">
                   {t.card1Desc}
                 </p>
-              </div>
+              </motion.div>
               
-              <div 
+              <motion.div 
                 data-aos="fade-up"
                 data-aos-delay="450"
                 data-aos-duration="800"
-                className="group clay-card p-5 rounded-2xl cursor-pointer"
+                className="group clay-card p-5 rounded-2xl cursor-pointer select-none"
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.97 }}
               >
                 <div className="w-9 h-9 rounded-xl bg-[#bf9d55]/10 border border-[#bf9d55]/20 flex items-center justify-center text-[#bf9d55] shadow-sm mb-4 group-hover:scale-105 transition-transform">
                   <ShieldCheck size={16} />
@@ -173,13 +177,15 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                 <p className="text-stone-500 text-xs mt-1.5 leading-relaxed">
                   {t.card2Desc}
                 </p>
-              </div>
+              </motion.div>
 
-              <div 
+              <motion.div 
                 data-aos="fade-up"
                 data-aos-delay="550"
                 data-aos-duration="800"
-                className="group clay-card p-5 rounded-2xl cursor-pointer"
+                className="group clay-card p-5 rounded-2xl cursor-pointer select-none"
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.97 }}
               >
                 <div className="w-9 h-9 rounded-xl bg-[#bf9d55]/10 border border-[#bf9d55]/20 flex items-center justify-center text-[#bf9d55] shadow-sm mb-4 group-hover:scale-105 transition-transform">
                   <Sparkles size={16} />
@@ -188,7 +194,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                 <p className="text-stone-500 text-xs mt-1.5 leading-relaxed">
                   {t.card3Desc}
                 </p>
-              </div>
+              </motion.div>
             </div>
 
             {/* Bottom elegant tag row */}
@@ -198,22 +204,22 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
               data-aos-duration="800"
               className="flex flex-wrap gap-2.5 pt-4 border-t border-stone-100"
             >
-              <span className="text-[10px] font-bold text-stone-500 tracking-wider uppercase bg-[#F9F8F4] border border-stone-200/50 px-3.5 py-1.5 rounded-full hover:border-[#bf9d55]/30 transition-colors">
+              <span className="text-[10px] font-bold text-stone-500 tracking-wider uppercase bg-[#F9F8F4] border border-stone-200/50 px-3.5 py-1.5 rounded-full hover:border-[#bf9d55]/30 active:scale-95 transition-all cursor-pointer select-none">
                 #React.js
               </span>
-              <span className="text-[10px] font-bold text-stone-500 tracking-wider uppercase bg-[#F9F8F4] border border-stone-200/50 px-3.5 py-1.5 rounded-full hover:border-[#bf9d55]/30 transition-colors">
+              <span className="text-[10px] font-bold text-stone-500 tracking-wider uppercase bg-[#F9F8F4] border border-stone-200/50 px-3.5 py-1.5 rounded-full hover:border-[#bf9d55]/30 active:scale-95 transition-all cursor-pointer select-none">
                 #Node.js / Express
               </span>
-              <span className="text-[10px] font-bold text-stone-500 tracking-wider uppercase bg-[#F9F8F4] border border-stone-200/50 px-3.5 py-1.5 rounded-full hover:border-[#bf9d55]/30 transition-colors">
+              <span className="text-[10px] font-bold text-stone-500 tracking-wider uppercase bg-[#F9F8F4] border border-stone-200/50 px-3.5 py-1.5 rounded-full hover:border-[#bf9d55]/30 active:scale-95 transition-all cursor-pointer select-none">
                 #MongoDB / Mongoose
               </span>
-              <span className="text-[10px] font-bold text-stone-500 tracking-wider uppercase bg-[#F9F8F4] border border-stone-200/50 px-3.5 py-1.5 rounded-full hover:border-[#bf9d55]/30 transition-colors">
+              <span className="text-[10px] font-bold text-stone-500 tracking-wider uppercase bg-[#F9F8F4] border border-stone-200/50 px-3.5 py-1.5 rounded-full hover:border-[#bf9d55]/30 active:scale-95 transition-all cursor-pointer select-none">
                 #React Query
               </span>
-              <span className="text-[10px] font-bold text-stone-500 tracking-wider uppercase bg-[#F9F8F4] border border-stone-200/50 px-3.5 py-1.5 rounded-full hover:border-[#bf9d55]/30 transition-colors">
+              <span className="text-[10px] font-bold text-stone-500 tracking-wider uppercase bg-[#F9F8F4] border border-stone-200/50 px-3.5 py-1.5 rounded-full hover:border-[#bf9d55]/30 active:scale-95 transition-all cursor-pointer select-none">
                 #Prompt Engineering
               </span>
-              <span className="text-[10px] font-bold text-stone-500 tracking-wider uppercase bg-[#F9F8F4] border border-stone-200/50 px-3.5 py-1.5 rounded-full hover:border-[#bf9d55]/30 transition-colors">
+              <span className="text-[10px] font-bold text-stone-500 tracking-wider uppercase bg-[#F9F8F4] border border-stone-200/50 px-3.5 py-1.5 rounded-full hover:border-[#bf9d55]/30 active:scale-95 transition-all cursor-pointer select-none">
                 #AI Architectures
               </span>
             </div>

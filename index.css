@@ -71,3 +71,46 @@ html, body {
     border-color: rgba(197, 160, 89, 0.45);
   }
 }
+
+/* Print Styles to print only the resume and hide all other UI elements */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  /* Hide every element on the page */
+  body > * {
+    display: none !important;
+  }
+  
+  /* Show only the printable resume container and its parents */
+  #printable-resume-wrapper,
+  #printable-resume-wrapper * {
+    display: block !important;
+  }
+
+  #printable-resume,
+  #printable-resume * {
+    visibility: visible !important;
+    display: block !important;
+  }
+
+  #printable-resume {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: white !important;
+  }
+
+  /* Hide headers, buttons, overlays and backgrounds inside the print area */
+  .fixed, .bg-stone-900\/60, .bg-stone-50, button, a, .shrink-0, .scrollbar-thin {
+    display: none !important;
+  }
+}

@@ -114,7 +114,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ setMenuOpen, setIsResume
             <button
               key={lang}
               onClick={() => setLanguage(lang)}
-              className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
+              className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer active:scale-95 ${
                 language === lang 
                   ? 'bg-[#bf9d55] text-white shadow-sm' 
                   : 'text-stone-500 hover:text-stone-900'
@@ -133,7 +133,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ setMenuOpen, setIsResume
             href={link.link} 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="text-stone-600 hover:text-nobel-gold active:scale-90 transition-transform p-2 bg-white/50 rounded-full border border-stone-200/50"
+            className="text-stone-600 hover:text-nobel-gold active:scale-90 active:bg-stone-100 transition-all p-2 bg-white/50 rounded-full border border-stone-200/50"
           >
             <link.icon size={22} />
           </a>

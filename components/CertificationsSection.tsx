@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, ArrowUpRight } from 'lucide-react';
+import { Sparkles, ArrowUpRight, BookOpen, ShieldCheck, Layout } from 'lucide-react';
 import { certifications } from '../data';
 import { useLanguage } from './LanguageContext';
 
@@ -11,44 +11,44 @@ export const CertificationsSection: React.FC = () => {
     if (language === 'de') {
       return [
         {
-          title: "HackerRank: JavaScript & Java (2025)",
+          title: "HackerRank: JavaScript & Java Verified",
           description: "Verifizierte Gold-Abzeichen-Kompetenz, die fortgeschrittene prozedurale Logik, Typisierungssicherheit, objektorientierte Konzepte und Rechenalgorithmen demonstriert.",
           url: "https://www.hackerrank.com/profile/mafrooktkc",
-          icon: certifications[0].icon
+          icon: certifications[0]?.icon || BookOpen
         },
         {
           title: "AWS Academy: Cloud Foundations",
           description: "AWS-Akkreditierung, die virtualisierte Cloud-Architekturen, verwaltete Datenbanken, Sicherheitszugriffsrollen (IAM) und hochskalierbare Hosting-Umgebungen umfasst.",
           url: "https://www.linkedin.com/in/k-mafrook/",
-          icon: certifications[1].icon
+          icon: certifications[1]?.icon || ShieldCheck
         },
         {
           title: "freeCodeCamp: Responsive Web Design",
           description: "Umfassender Lehrplan mit detaillierten Anweisungen zu benutzerdefinierten Viewport-Medien, flüssigen Layout-Ausrichtungsalgorithmen, Flexbox-Gittern und Designstandards.",
           url: "https://www.linkedin.com/in/k-mafrook/",
-          icon: certifications[2].icon
+          icon: certifications[2]?.icon || Layout
         }
       ];
     }
     if (language === 'ar') {
       return [
         {
-          title: "HackerRank: JavaScript & Java (2025)",
+          title: "HackerRank: JavaScript & Java Verified",
           description: "إثبات كفاءة الشارة الذهبية المعتمدة في إظهار المنطق الإجرائي المتقدم، سلامة كتابة الأكواد، مفاهيم البرمجة كائنية التوجه (OOP)، والخوارزميات الحسابية المعقدة.",
           url: "https://www.hackerrank.com/profile/mafrooktkc",
-          icon: certifications[0].icon
+          icon: certifications[0]?.icon || BookOpen
         },
         {
           title: "AWS Academy: Cloud Foundations",
           description: "اعتماد من أكاديمية AWS يغطي بنيات السحابة الافتراضية، وقواعد البيانات المدارة، وأدوار الوصول الأمني (IAM)، وبيئات الاستضافة عالية التدرج والقابلية للتوسع.",
           url: "https://www.linkedin.com/in/k-mafrook/",
-          icon: certifications[1].icon
+          icon: certifications[1]?.icon || ShieldCheck
         },
         {
           title: "freeCodeCamp: Responsive Web Design",
           description: "منهج هندسي شامل يشرح بالتفصيل توجيهات وسائط العرض المخصصة (Media Queries)، وخوارزميات محاذاة التخطيط المرن (Flexbox)، وشبكات التصميم المتجاوبة.",
           url: "https://www.linkedin.com/in/k-mafrook/",
-          icon: certifications[2].icon
+          icon: certifications[2]?.icon || Layout
         }
       ];
     }

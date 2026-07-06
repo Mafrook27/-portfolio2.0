@@ -2,6 +2,7 @@ import React from 'react';
 import { Briefcase } from 'lucide-react';
 import { experience } from '../data';
 import { useLanguage } from './LanguageContext';
+import { motion } from 'framer-motion';
 
 interface ExperienceSectionProps {
   totalExp: {
@@ -104,7 +105,11 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ totalExp }
               {/* Decorative Timeline Circular Pulse Badge */}
               <div className="absolute -left-[31px] sm:-left-[39px] top-8 w-4 h-4 rounded-full border-2 border-white bg-stone-300 group-hover:bg-[#bf9d55] group-hover:scale-125 transition-all duration-300 shadow-[0_0_0_4px_rgba(255,255,255,1)] z-10"></div>
                             {/* Compact Flex Grid Structure styled with Claymorphism */}
-              <div className="clay-card p-5 sm:p-6 md:p-8 rounded-[1.75rem] flex flex-col md:flex-row md:items-start md:justify-between gap-4 sm:gap-6">
+              <motion.div 
+                className="clay-card p-5 sm:p-6 md:p-8 rounded-[1.75rem] flex flex-col md:flex-row md:items-start md:justify-between gap-4 sm:gap-6 cursor-pointer select-none"
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.98 }}
+              >
                 {/* Left Metadata Column */}
                 <div className="space-y-1 sm:space-y-1.5 md:w-1/3 shrink-0">
                   <span className="inline-block text-[9px] sm:text-[10px] font-bold text-[#bf9d55] tracking-widest uppercase bg-[#bf9d55]/10 border border-[#bf9d55]/20 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full font-mono">
@@ -141,29 +146,29 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ totalExp }
                   <div className="flex flex-wrap gap-1.5 pt-2">
                     {idx === 0 ? (
                       <>
-                        <span className="text-[9px] font-bold text-stone-500 tracking-wider uppercase bg-[#F9F8F4] border border-stone-200/30 px-2.5 py-1 rounded-full transition-colors hover:border-[#bf9d55]/30">
+                        <span className="text-[9px] font-bold text-stone-500 tracking-wider uppercase bg-[#F9F8F4] border border-stone-200/30 px-2.5 py-1 rounded-full transition-all hover:border-[#bf9d55]/30 active:scale-95 cursor-pointer">
                           #MERN Stack
                         </span>
-                        <span className="text-[9px] font-bold text-stone-500 tracking-wider uppercase bg-[#F9F8F4] border border-stone-200/30 px-2.5 py-1 rounded-full transition-colors hover:border-[#bf9d55]/30">
+                        <span className="text-[9px] font-bold text-stone-500 tracking-wider uppercase bg-[#F9F8F4] border border-stone-200/30 px-2.5 py-1 rounded-full transition-all hover:border-[#bf9d55]/30 active:scale-95 cursor-pointer">
                           #React Query
                         </span>
-                        <span className="text-[9px] font-bold text-stone-500 tracking-wider uppercase bg-[#F9F8F4] border border-stone-200/30 px-2.5 py-1 rounded-full transition-colors hover:border-[#bf9d55]/30">
+                        <span className="text-[9px] font-bold text-stone-500 tracking-wider uppercase bg-[#F9F8F4] border border-stone-200/30 px-2.5 py-1 rounded-full transition-all hover:border-[#bf9d55]/30 active:scale-95 cursor-pointer">
                           #REST APIs
                         </span>
                       </>
                     ) : (
                       <>
-                        <span className="text-[9px] font-bold text-stone-500 tracking-wider uppercase bg-[#F9F8F4] border border-stone-200/30 px-2.5 py-1 rounded-full transition-colors hover:border-[#bf9d55]/30">
+                        <span className="text-[9px] font-bold text-stone-500 tracking-wider uppercase bg-[#F9F8F4] border border-stone-200/30 px-2.5 py-1 rounded-full transition-all hover:border-[#bf9d55]/30 active:scale-95 cursor-pointer">
                           #JS & Python
                         </span>
-                        <span className="text-[9px] font-bold text-stone-500 tracking-wider uppercase bg-[#F9F8F4] border border-stone-200/30 px-2.5 py-1 rounded-full transition-colors hover:border-[#bf9d55]/30">
+                        <span className="text-[9px] font-bold text-stone-500 tracking-wider uppercase bg-[#F9F8F4] border border-stone-200/30 px-2.5 py-1 rounded-full transition-all hover:border-[#bf9d55]/30 active:scale-95 cursor-pointer">
                           #Mentorship
                         </span>
                       </>
                     )}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           ))}
         </div>
