@@ -80,24 +80,6 @@ LANGUAGES:
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleDownload = async () => {
-    try {
-      const response = await fetch('/resume.pdf');
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', 'Mafrook_Kuthpudeen_Resume.pdf');
-      document.body.appendChild(link);
-      link.click();
-      link.parentNode?.removeChild(link);
-      window.URL.revokeObjectURL(url);
-    } catch (err) {
-      console.error("Download failed, opening fallback link", err);
-      window.open('/resume.pdf', '_blank');
-    }
-  };
-
   if (!isOpen) return null;
 
   return (
@@ -140,13 +122,16 @@ LANGUAGES:
                 <Printer size={12} />
                 <span>Open / Print PDF</span>
               </a>
-              <button 
-                onClick={handleDownload}
+              <a 
+                href="/resume.pdf"
+                download="Mafrook_Kuthpudeen_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-2.5 py-1.5 text-xs text-white bg-stone-900 hover:bg-stone-800 rounded-lg transition-all flex items-center gap-1.5 font-medium active:scale-95 shadow-sm cursor-pointer"
               >
                 <Download size={12} className="text-nobel-gold" />
                 <span>Download PDF</span>
-              </button>
+              </a>
             </div>
             <button 
               onClick={onClose}
