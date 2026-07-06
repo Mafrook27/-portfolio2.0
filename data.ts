@@ -42,31 +42,24 @@ export const skills = {
 
 export const projects = [
     {
+        title: "html-formeditor [opensrc]",
+        desc: "Built a custom, canvas-style visual editor from scratch to create and manage official company documents and email templates. Designed an intuitive drag-and-drop canvas interface leveraging shadcn/ui and Tailwind CSS, eliminating third-party builder packages, and ensuring strict type-safety via TypeScript.",
+        github: "https://github.com/Mafrook27",
+        technologies: ["React.js", "shadcn", "tailwind", "typescript"],
+        icon: Code2
+    },
+    {
         title: "AccessVault - Role-Based Credential Management System",
-        desc: "A secure credential ecosystem supporting Admin, Manager, and Viewer levels. Features robust JWT authentication, bcrypt password hashing, and comprehensive express-based REST APIs with database-integrated validation schemas using Mongoose/MongoDB.",
+        desc: "A secure credential management application with role-based access for Admin, Manager, and Viewer users. Implemented JWT authentication and bcrypt password hashing, designed MongoDB schemas with validation rules, and built REST APIs with audit logging capabilities.",
         github: "https://github.com/Mafrook27",
-        technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "Mongoose", "JWT", "bcrypt"],
+        technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT", "bcrypt"],
         icon: ShieldCheck
-    },
-    {
-        title: "Loan Workflow Platform (Statlight)",
-        desc: "Interactive admin-facing workflows managing loan application tracking and state machines (Pending, Approved, Rejected, Closed). Built custom, reusable modular components and optimized UI state synchronization using React Query caching layer.",
-        github: "https://github.com/Mafrook27",
-        technologies: ["React.js", "React Query", "REST API", "Tailwind CSS", "MERN Stack"],
-        icon: AppWindow
-    },
-    {
-        title: "Banking System & Facial Login",
-        desc: "A secure electronic banking portal built with Python, Flask, OpenCV for facial recognition login templates, database-driven balance updating pipelines, and a structured MySQL transactional storage layout.",
-        github: "https://github.com/Mafrook27",
-        technologies: ["Python", "Flask", "OpenCV", "MySQL", "HTML/CSS"],
-        icon: DatabaseZap
     }
 ];
 
 export const certifications = [
     {
-        title: "HackerRank: JavaScript & Java (2025)",
+        title: "HackerRank: JavaScript & Java Verified",
         description: "Verified gold-badge proficiency demonstrating advanced procedural logic, typing safety, object-oriented concepts, and computational algorithms.",
         url: "https://www.hackerrank.com/profile/mafrooktkc",
         icon: BookOpen
@@ -90,33 +83,35 @@ export const experience = [
         role: "Junior Software Engineer",
         company: "Statlight Software Solutions",
         location: "Bengaluru, India | Hybrid",
-        period: "July 2025 - Present",
-        startDate: "2025-07-01",
+        period: "Jun 2025 - Present",
+        startDate: "2025-06-01",
         endDate: null,
         points: [
-            "Built dynamic React modules for a commercial loan management and onboarding platform.",
-            "Refactored legacy UI components from Angular to scalable, high-performance React layouts.",
-            "Constructed secure Node/Express REST APIs backed by JWT role validation and optimized Mongoose schemes.",
-            "Synchronized server states over the browser layer using React Query to eliminate redundant data cycles."
+            "Develop and maintain frontend and full-stack modules for business web applications, including loan management screens, LMS frontend work, and internal chat module features.",
+            "Build React.js and TypeScript UI components for dashboards, forms, workflow screens, and user-facing business modules.",
+            "Work on multi-tenant chat module features involving session handling, UI flows, and frontend-backend integration.",
+            "Integrate REST APIs using React Query for data fetching, loading states, error states, and form submission workflows.",
+            "Build and update Node.js, Express.js APIs and MongoDB/Mongoose schemas for authentication, role-based access, workflow records, logs, and application data.",
+            "Debug issues related to API responses, form validation, data rendering, authentication, and role-based user flows."
         ]
     },
     {
-        role: "Technical Trainer",
-        company: "Livewire Institutions",
+        role: "Apprenticeship",
+        company: "a1ideaz",
         location: "Mayiladuthurai, India",
-        period: "Oct 2024 - Feb 2025",
-        startDate: "2024-10-01",
-        endDate: "2025-02-28",
+        period: "Oct 2025 - Feb 2026",
+        startDate: "2025-10-01",
+        endDate: "2026-02-28",
         points: [
-            "Trained junior engineers in core full-stack constructs across JavaScript, Python, and CRUD APIs.",
-            "Mentored students through building custom database-integrated web prototypes and debugging network layers."
+            "Trained students in JavaScript, Java, Python, and full-stack development fundamentals with a focus on practical coding sessions.",
+            "Guided learners in building CRUD applications, authentication flows, REST API basics, and database-connected projects."
         ]
     }
 ];
 
 export const education = {
-    degree: "Bachelor of Engineering in Computer Science and Engineering",
+    degree: "Bachelor of Engineering - Computer Science and Engineering",
     college: "E.G.S. Pillay Engineering College, Nagapattinam",
-    period: "2020 - 2024",
-    cgpa: "8.1 / 10"
+    period: "Oct 2020 - Jun 2024",
+    cgpa: "8.0 / 10"
 };

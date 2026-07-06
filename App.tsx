@@ -17,7 +17,7 @@ import { CertificationsSection } from './components/CertificationsSection';
 import { Footer } from './components/Footer';
 
 // Localization Provider
-import { LanguageProvider } from './components/LanguageContext';
+import { LanguageProvider, useLanguage } from './components/LanguageContext';
 
 // Performance Provider
 import { PerformanceProvider, usePerformance } from './components/PerformanceContext';
@@ -34,6 +34,7 @@ const roles = [
 
 const AppContent = () => {
   const { ecoMode } = usePerformance();
+  const { language } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
@@ -80,7 +81,7 @@ const AppContent = () => {
       window.removeEventListener('scroll', handleScroll);
       clearTimeout(timer);
     };
-  }, [ecoMode]);
+  }, [ecoMode, language]);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText('Mafrooktkc@gmail.com');
