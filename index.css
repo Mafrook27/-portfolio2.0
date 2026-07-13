@@ -228,6 +228,132 @@ html, body {
   transform: rotate(-1.5deg);
 }
 
+/* ---------------------------------------------------------------------------
+   Markdown prose (blog posts & prompt pages)
+   Tuned for comfortable reading on mobile and desktop.
+--------------------------------------------------------------------------- */
+.md-prose {
+  color: var(--ink);
+  font-size: 0.925rem;
+  line-height: 1.8;
+}
+
+@media (min-width: 640px) {
+  .md-prose { font-size: 1rem; }
+}
+
+.md-prose h1, .md-prose h2, .md-prose h3, .md-prose h4 {
+  font-family: "Sora", system-ui, sans-serif;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  margin: 2em 0 0.6em;
+}
+
+.md-prose h1 { font-size: 1.6em; }
+.md-prose h2 {
+  font-size: 1.3em;
+  padding-bottom: 0.35em;
+  border-bottom: 1px dashed var(--line);
+}
+.md-prose h3 { font-size: 1.12em; }
+.md-prose h4 { font-size: 1em; }
+.md-prose > :first-child { margin-top: 0; }
+
+.md-prose p { margin: 0.9em 0; }
+.md-prose strong { font-weight: 700; color: var(--ink); }
+
+.md-prose a {
+  color: var(--clay);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--clay) 40%, transparent);
+  text-underline-offset: 3px;
+}
+.md-prose a:hover { text-decoration-color: var(--clay); }
+
+.md-prose ul, .md-prose ol {
+  margin: 0.9em 0;
+  padding-inline-start: 1.4em;
+}
+.md-prose ul { list-style: disc; }
+.md-prose ol { list-style: decimal; }
+.md-prose li { margin: 0.35em 0; }
+.md-prose li::marker { color: var(--clay); }
+
+.md-prose blockquote {
+  margin: 1.2em 0;
+  padding: 0.6em 1.1em;
+  border-inline-start: 3px solid var(--clay);
+  background-color: var(--paper-2);
+  border-radius: 0 8px 8px 0;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.md-prose hr {
+  border: none;
+  border-top: 1px dashed var(--line);
+  margin: 2.2em 0;
+}
+
+.md-prose code:not(.hljs-body) {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85em;
+  background-color: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 0.1em 0.4em;
+  color: var(--clay);
+}
+
+.md-prose .md-img {
+  display: block;
+  max-width: 100%;
+  margin: 1.4em auto;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 24px -12px var(--shadow);
+}
+
+.md-prose .md-table-wrap {
+  overflow-x: auto;
+  margin: 1.4em 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.md-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875em;
+}
+.md-prose th, .md-prose td {
+  padding: 0.55em 0.9em;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+.md-prose th {
+  background-color: var(--paper-2);
+  font-weight: 700;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.md-prose tr:last-child td { border-bottom: none; }
+
+/* Syntax highlighting — theme-token based, works in light & dark */
+.hljs-body { color: var(--ink); }
+.hljs-comment, .hljs-quote { color: var(--ink-soft); opacity: 0.75; font-style: italic; }
+.hljs-keyword, .hljs-selector-tag, .hljs-literal, .hljs-section, .hljs-meta { color: var(--clay); font-weight: 600; }
+.hljs-string, .hljs-regexp, .hljs-addition, .hljs-attribute { color: var(--olive); }
+.hljs-title, .hljs-name, .hljs-type, .hljs-class .hljs-title, .hljs-title.class_, .hljs-title.function_ { color: var(--denim); font-weight: 600; }
+.hljs-number, .hljs-symbol, .hljs-bullet, .hljs-link { color: var(--clay); }
+.hljs-built_in, .hljs-builtin-name, .hljs-variable, .hljs-template-variable, .hljs-attr { color: var(--olive-deep); }
+.hljs-deletion { color: #b5484a; }
+.hljs-emphasis { font-style: italic; }
+.hljs-strong { font-weight: 700; }
+
 /* Print Overrides */
 @media print {
   body {
