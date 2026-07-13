@@ -19,6 +19,12 @@ import { Footer } from './components/Footer';
 // Localization Provider
 import { LanguageProvider, useLanguage } from './components/LanguageContext';
 
+// Theme Provider
+import { ThemeProvider } from './components/ThemeContext';
+
+// Flying Paper Rocket Component
+import { FlyingPaperRocket } from './components/FlyingPaperRocket';
+
 // Performance Provider
 import { PerformanceProvider, usePerformance } from './components/PerformanceContext';
 
@@ -40,6 +46,25 @@ const AppContent = () => {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+
+  const [hideNavbars, setHideNavbars] = useState(false);
+  const certNavTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+
+  const handleCertNavInteraction = () => {
+    setHideNavbars(true);
+    if (certNavTimeoutRef.current) {
+      clearTimeout(certNavTimeoutRef.current);
+    }
+    certNavTimeoutRef.current = setTimeout(() => {
+      setHideNavbars(false);
+    }, 2500);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (certNavTimeoutRef.current) clearTimeout(certNavTimeoutRef.current);
+    };
+  }, []);
 
   // Dynamic role ticker
   useEffect(() => {
@@ -127,13 +152,17 @@ const AppContent = () => {
   const totalExp = calculateTotalExperience();
 
   return (
-    <div className="min-h-screen bg-[#F9F8F4] text-stone-800 selection:bg-nobel-gold selection:text-white transition-colors duration-500">
+    <div className="min-h-screen bg-paper text-ink selection:bg-clay selection:text-white transition-colors duration-300">
+      {/* Global Flying Paper Rocket Interactions */}
+      <FlyingPaperRocket />
+
       {/* Navigation Header */}
       <Header 
         scrolled={scrolled} 
         menuOpen={menuOpen} 
         setMenuOpen={setMenuOpen} 
         setIsResumeOpen={setIsResumeOpen} 
+        hideNavbar={hideNavbars}
       />
       
       {/* Mobile Menu Overlay */}
@@ -165,9 +194,9 @@ const AppContent = () => {
 
         <ExperienceSection totalExp={totalExp} />
 
-        <ProjectsSection />
+        <ProjectsSection hideNavbar={hideNavbars} />
 
-        <CertificationsSection />
+        <CertificationsSection onNavInteraction={handleCertNavInteraction} />
       </main>
 
       {/* Footer Branding and Social links */}
@@ -180,14 +209,14 @@ const AppContent = () => {
             initial={{ opacity: 0, scale: 0.8, y: 50 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 50 }}
-            whileHover={{ scale: 1.1, y: -5 }}
+            whileHover={{ scale: 1.1, y: -4 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="fixed bottom-8 right-8 z-50 bg-stone-900 border border-stone-800 text-nobel-gold rounded-full shadow-[0_10px_35px_rgba(0,0,0,0.25)] p-4 flex items-center justify-center backdrop-blur-md hover:bg-stone-800 transition-all duration-300 group cursor-pointer"
+            className="fixed bottom-6 right-6 z-50 bg-card border border-line text-ink-soft hover:text-clay rounded-full shadow-lg p-3.5 flex items-center justify-center hover:bg-paper-2 transition-all cursor-pointer"
             aria-label="Scroll to top"
             title="Scroll to Top"
           >
-            <ArrowUp size={20} className="group-hover:-translate-y-0.5 transition-transform duration-300" />
+            <ArrowUp size={16} />
           </motion.button>
         )}
       </AnimatePresence>
@@ -205,9 +234,11 @@ const AppContent = () => {
 const App = () => {
   return (
     <PerformanceProvider>
-      <LanguageProvider>
-        <AppContent />
-      </LanguageProvider>
+      <ThemeProvider>
+        <LanguageProvider>
+          <AppContent />
+        </LanguageProvider>
+      </ThemeProvider>
     </PerformanceProvider>
   );
 };

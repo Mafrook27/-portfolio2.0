@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Phone, FileText } from 'lucide-react';
 import { socialLinks } from '../data';
-import { useLanguage } from './LanguageContext';
+import { useLanguage, Language } from './LanguageContext';
 
 interface MobileMenuProps {
   setMenuOpen: (open: boolean) => void;
@@ -18,35 +18,35 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ setMenuOpen, setIsResume
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
-        ease: [0.16, 1, 0.3, 1],
-        staggerChildren: 0.08,
-        delayChildren: 0.15,
+        duration: 0.5,
+        ease: "easeOut",
+        staggerChildren: 0.05,
+        delayChildren: 0.1,
       },
     },
     exit: {
       opacity: 0,
       y: "-100%",
       transition: {
-        duration: 0.5,
-        ease: [0.16, 1, 0.3, 1],
-        staggerChildren: 0.05,
+        duration: 0.4,
+        ease: "easeIn",
+        staggerChildren: 0.03,
         staggerDirection: -1,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 15 },
     visible: { 
       opacity: 1, 
       y: 0, 
-      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } 
+      transition: { duration: 0.4, ease: "easeOut" } 
     },
     exit: { 
       opacity: 0, 
-      y: -20, 
-      transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } 
+      y: -15, 
+      transition: { duration: 0.2, ease: "easeIn" } 
     }
   };
 
@@ -64,31 +64,33 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ setMenuOpen, setIsResume
       initial="hidden"
       animate="visible"
       exit="exit"
-      className="fixed inset-0 z-40 bg-[#F9F8F4] flex flex-col items-center justify-center gap-6 px-6"
+      className="fixed inset-0 z-40 bg-paper flex flex-col items-center justify-center gap-6 px-6"
     >
-      <div className="flex flex-col items-center justify-center gap-6 text-2xl font-serif mt-12">
+      {/* Mobile Nav Links */}
+      <div className="flex flex-col items-center justify-center gap-5 text-lg font-sans font-extrabold mt-12">
         {menuItems.map((item) => (
           <motion.a
             key={item.label}
             variants={itemVariants}
             href={item.href}
             onClick={() => setMenuOpen(false)}
-            className="hover:text-nobel-gold text-stone-800 transition-colors uppercase tracking-wider font-semibold active:scale-95 transition-transform duration-200"
+            className="hover:text-clay text-ink transition-colors uppercase tracking-widest"
           >
             {item.label}
           </motion.a>
         ))}
       </div>
 
-      <motion.div variants={itemVariants} className="flex flex-col gap-3 w-64 mt-6">
+      {/* Primary Mobile CTA buttons */}
+      <motion.div variants={itemVariants} className="flex flex-col gap-2.5 w-60 mt-4">
         <a 
           href="https://wa.me/918925661541"
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => setMenuOpen(false)}
-          className="border border-stone-200 text-stone-700 bg-white hover:bg-stone-50 active:scale-[0.97] active:bg-stone-100 font-sans font-semibold text-xs tracking-widest uppercase py-3.5 rounded-full flex items-center justify-center gap-2 transition-all duration-300 shadow-sm"
+          className="border border-line text-ink-soft bg-card hover:bg-paper-2 active:scale-95 font-sans font-semibold text-[10px] tracking-widest uppercase py-3 rounded-md flex items-center justify-center gap-1.5 transition-all shadow-sm"
         >
-          <Phone size={14} className="text-[#bf9d55]" />
+          <Phone size={11} className="text-clay" />
           <span>{t.getInTouch}</span>
         </a>
 
@@ -97,27 +99,27 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ setMenuOpen, setIsResume
             setMenuOpen(false);
             setIsResumeOpen(true);
           }}
-          className="bg-stone-900 text-white font-sans font-semibold text-xs tracking-widest uppercase py-3.5 rounded-full flex items-center justify-center gap-2 transition-all duration-300 active:scale-[0.97] active:bg-stone-800 shadow-md cursor-pointer"
+          className="bg-clay hover:brightness-110 text-white font-sans font-semibold text-[10px] tracking-widest uppercase py-3 rounded-md flex items-center justify-center gap-1.5 active:scale-95 transition-all shadow-md cursor-pointer"
         >
-          <FileText size={14} className="text-nobel-gold" />
+          <FileText size={11} />
           <span>{t.resume}</span>
         </button>
       </motion.div>
 
-      {/* Explicit Language Selector in Mobile Drawer */}
+      {/* Language selections */}
       <motion.div variants={itemVariants} className="flex flex-col items-center gap-2 mt-4">
-        <span className="text-[10px] font-bold tracking-widest text-stone-400 uppercase font-mono">
-          {language === 'ar' ? 'اختر اللغة' : language === 'de' ? 'Sprache auswählen' : 'Select Language'}
+        <span className="text-[9px] font-bold tracking-widest text-ink-soft/50 uppercase font-mono">
+          Select Language
         </span>
-        <div className="flex items-center bg-stone-200/40 p-0.5 rounded-full border border-stone-300/30">
-          {(['en', 'de', 'ar'] as const).map((lang) => (
+        <div className="flex items-center bg-paper-2 p-0.5 rounded-full border border-line">
+          {(['en', 'de', 'ar'] as Language[]).map((lang) => (
             <button
               key={lang}
               onClick={() => setLanguage(lang)}
-              className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer active:scale-95 ${
+              className={`px-3 py-1 rounded-full text-[10px] font-extrabold transition-all cursor-pointer ${
                 language === lang 
-                  ? 'bg-[#bf9d55] text-white shadow-sm' 
-                  : 'text-stone-500 hover:text-stone-900'
+                  ? 'bg-clay text-white shadow-sm' 
+                  : 'text-ink-soft hover:text-ink'
               }`}
             >
               {lang.toUpperCase()}
@@ -126,19 +128,22 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ setMenuOpen, setIsResume
         </div>
       </motion.div>
 
-      <motion.div variants={itemVariants} className="flex gap-4 mt-6">
+      {/* Social links */}
+      <motion.div variants={itemVariants} className="flex gap-3.5 mt-4">
         {socialLinks.map((link) => (
           <a 
             key={link.name} 
             href={link.link} 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="text-stone-600 hover:text-nobel-gold active:scale-90 active:bg-stone-100 transition-all p-2 bg-white/50 rounded-full border border-stone-200/50"
+            className="text-ink-soft hover:text-clay active:scale-90 transition-all p-2 bg-card rounded-md border border-line"
           >
-            <link.icon size={22} />
+            <link.icon size={16} />
           </a>
         ))}
       </motion.div>
     </motion.div>
   );
 };
+
+export default MobileMenu;
