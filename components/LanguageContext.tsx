@@ -90,7 +90,7 @@ const translations: Record<Language, TranslationDictionary> = {
 
     aboutPretitle: "Introduction",
     aboutTitle: "About Me",
-    aboutBio: "I am Mafrook Kuthpudeen, a Junior Software Engineer with around 1 year of experience developing business web applications using React.js, TypeScript, Node.js, Express.js, and MongoDB. I have worked on loan management software, LMS frontend modules, and multi-tenant chat features involving session handling and role-based access. I am comfortable building data-driven screens, reusable UI components, and debugging frontend-backend issues in product environments.",
+    aboutBio: "Hey! I'm Mafrook, a full-stack developer who loves turning ideas into clean, highly-polished web apps. With a year of experience, I spend my days writing React, building speedy Node backend services, and organizing code like a neat physical desk. Let's build some cool internet stuff together!",
     locationLabel: "Location",
     locationValue: "Mayiladuthurai, Tamilnadu, India",
     educationLabel: "Education",
@@ -109,10 +109,10 @@ const translations: Record<Language, TranslationDictionary> = {
 
     skillsPretitle: "Expertise",
     skillsTitle: "Skills",
-    skillsDescLanguages: "Advanced computer languages that serve as the foundation of secure web structures and performant computations.",
-    skillsDescFrameworks: "Modern environments and systems for high-grade responsive single-page visual flow and server-side logic.",
-    skillsDescTools: "Automated workflow platforms, API interaction workspaces, version controllers, and hosting servers.",
-    skillsDescAI: "Harnessing state-of-the-art Large Language Models, specification files, layout assembly mechanisms, and prompt structures to build high-grade software products rapidly.",
+    skillsDescLanguages: "Core programming languages for building secure, performant applications.",
+    skillsDescFrameworks: "Modern libraries and systems for interactive interfaces and backend logic.",
+    skillsDescTools: "Essential development environments, version control, and cloud hosting.",
+    skillsDescAI: "Leveraging advanced LLMs and precision prompting to accelerate software development.",
 
     expPretitle: "History",
     expTitle: "Experience",
@@ -149,7 +149,7 @@ const translations: Record<Language, TranslationDictionary> = {
 
     aboutPretitle: "Einführung",
     aboutTitle: "Über mich",
-    aboutBio: "Ich bin Mafrook Kuthpudeen, ein Junior Software Entwickler mit rund 1 Jahr Erfahrung in der Entwicklung von Business-Webanwendungen mit React.js, TypeScript, Node.js, Express.js und MongoDB. Ich habe an Kreditverwaltungssoftware, LMS-Frontend-Modulen und mandantenfähigen Chat-Funktionen mit Sitzungsverwaltung und rollenbasierter Zugriffskontrolle gearbeitet.",
+    aboutBio: "Hi! Ich bin Mafrook, ein Full-Stack-Entwickler, der es liebt, Ideen in sauber gestaltete, hochgradig polierte Web-Apps zu verwandeln. Mit einem Jahr Erfahrung code ich mit React, baue schnelle Node-Backends und organisiere Code so ordentlich wie einen echten Schreibtisch. Lass uns zusammen cooles Zeug entwickeln!",
     locationLabel: "Standort",
     locationValue: "Mayiladuthurai, Tamilnadu, Indien",
     educationLabel: "Ausbildung",
@@ -168,10 +168,10 @@ const translations: Record<Language, TranslationDictionary> = {
 
     skillsPretitle: "Expertise",
     skillsTitle: "Fähigkeiten",
-    skillsDescLanguages: "Fortgeschrittene Programmiersprachen, die als Grundlage für sichere Webstrukturen und performante Berechnungen dienen.",
-    skillsDescFrameworks: "Moderne Umgebungen und Systeme für hochwertigen, responsiven visuellen Ablauf und serverseitige Logik.",
-    skillsDescTools: "Automatisierte Workflow-Plattformen, API-Arbeitsbereiche, Versionskontrollen und Hosting-Server.",
-    skillsDescAI: "Nutzung modernster Large Language Models, Spezifikationsdateien, Layout-Baugruppen und Prompt-Strukturen für eine schnelle Softwareerstellung.",
+    skillsDescLanguages: "Kernsprachen für die Entwicklung sicherer und performanter Anwendungen.",
+    skillsDescFrameworks: "Moderne Bibliotheken und Systeme für interaktive Frontends und Backends.",
+    skillsDescTools: "Entwicklungswerkzeuge, Versionskontrolle und Cloud-Hosting.",
+    skillsDescAI: "Nutzung von LLMs und präzisem Prompt-Engineering zur Entwicklungsbeschleunigung.",
 
     expPretitle: "Verlauf",
     expTitle: "Erfahrung",
@@ -208,7 +208,7 @@ const translations: Record<Language, TranslationDictionary> = {
 
     aboutPretitle: "مقدمة",
     aboutTitle: "من أنا",
-    aboutBio: "أنا مفروق قطب الدين، مهندس برمجيات مبتدئ أملك حوالي عام من الخبرة في تطوير تطبيقات ويب للأعمال باستخدام React.js و TypeScript و Node.js و Express.js و MongoDB. عملت على برمجيات إدارة القروض، ووحدات LMS الأمامية، وميزات المحادثة متعددة المستأجرين مع معالجة الجلسات والتحكم في الوصول القائم على الأدوار.",
+    aboutBio: "أهلاً! أنا مفروق، مطور ويب متكامل (Fullstack) أعشق تحويل الأفكار إلى تطبيقات ويب مصقولة وسريعة. مع عام من الخبرة العملية، أقضي يومي في كتابة أكواد React، وبناء واجهات Express، وتنظيم مشاريعي بدقة كالمكتب المرتب تماماً. دعنا نبني أشياء مذهلة معاً!",
     locationLabel: "الموقع",
     locationValue: "ماييلادوثوراي، تاميل نادو، الهند",
     educationLabel: "التعليم",
@@ -227,10 +227,10 @@ const translations: Record<Language, TranslationDictionary> = {
 
     skillsPretitle: "الخبرة الكلية",
     skillsTitle: "المهارات المهنية",
-    skillsDescLanguages: "لغات البرمجة المتقدمة التي تشكل الأساس لبناء هياكل ويب آمنة وحسابات عالية الأداء.",
-    skillsDescFrameworks: "البيئات والأنظمة الحديثة لتقديم واجهات مستخدم متجاوبة ممتازة ومنطق معالجة متقدم من جانب السيرفر.",
-    skillsDescTools: "منصات العمل الآلية، بيئات اختبار الـ APIs، أنظمة التحكم في النسخ، وسيرفرات الاستضافة.",
-    skillsDescAI: "تسخير أحدث النماذج اللغوية الكبيرة (LLMs)، ملفات المواصفات، آليات بناء المخططات، وهياكل التوجيه لإنشاء برمجيات متقدمة بسرعة فائقة.",
+    skillsDescLanguages: "لغات البرمجة الأساسية لبناء تطبيقات ويب آمنة وعالية الأداء.",
+    skillsDescFrameworks: "أطر عمل وأنظمة حديثة لتطوير واجهات تفاعلية ومنطق برمجية متقدم.",
+    skillsDescTools: "أدوات التطوير الأساسية، أنظمة التحكم في النسخ، والاستضافة السحابية.",
+    skillsDescAI: "تسخير النماذج اللغوية الكبيرة وهندسة الأوامر لتسريع وتيرة التطوير.",
 
     expPretitle: "السيرة المهنية",
     expTitle: "الخبرة العملية",

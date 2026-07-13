@@ -3,6 +3,9 @@ import { motion } from 'framer-motion';
 import { FileText, Download, Check, Mail, Terminal, ShieldCheck, Sparkles } from 'lucide-react';
 import { SectionHeading } from './SectionHeading';
 import { useLanguage } from './LanguageContext';
+import { useTheme } from './ThemeContext';
+import { PushPin } from './PushPin';
+import { PhysicalCard } from './PhysicalCard';
 
 interface AboutSectionProps {
   setIsResumeOpen: (open: boolean) => void;
@@ -22,210 +25,142 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
   copiedEmail, 
   totalExp 
  }) => {
-  const { t, isRtl } = useLanguage();
+  const { language, t, isRtl } = useLanguage();
+  const { theme } = useTheme();
 
   return (
-    <section id="about" className="py-20 md:py-32 bg-white relative overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12 relative z-10">
+    <section id="about" className="py-24 sm:py-32 bg-paper border-b border-line relative overflow-hidden">
+      {/* Background paper texture accents */}
+      <div className="absolute top-1/4 left-10 w-80 h-80 bg-paper-2 rounded-full blur-[100px] pointer-events-none opacity-50"></div>
+
+      {/* Hand-drawn pencil sketch highlight circle around Card 1 area */}
+      <div className="absolute bottom-[8%] left-[2%] pointer-events-none opacity-[0.07] dark:opacity-[0.02] text-clay -z-10 select-none hidden sm:block">
+        <svg width="260" height="260" viewBox="0 0 200 200" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+          <path d="M 100 10 A 90 90 0 1 1 99.9 10" strokeDasharray="120 8 40 10" />
+          <path d="M 100 5 A 95 95 0 1 1 99.8 5" strokeWidth="0.8" opacity="0.5" strokeDasharray="160 15" />
+          <path d="M 40 40 L 50 50 M 50 40 L 40 50" strokeWidth="1" opacity="0.4" />
+        </svg>
+      </div>
+
+      {/* Hand-drawn coffee stain ring & pencil scratches in AboutSection */}
+      <div className="absolute top-[8%] right-[10%] pointer-events-none opacity-[0.06] dark:opacity-[0.02] text-ink rotate-[-8deg] hidden md:block">
+        <svg width="160" height="160" viewBox="0 0 160 160" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+          {/* Faded spill outlines */}
+          <path d="M 80 20 A 60 60 0 1 1 79.9 20" strokeDasharray="12 4 8 8" />
+          <path d="M 80 15 A 65 65 0 1 1 79.8 15" strokeWidth="1" opacity="0.6" />
+          {/* Quick handwritten code bracket doodle */}
+          <path d="M 25 45 C 15 50, 15 70, 25 75" strokeWidth="2.5" />
+          <path d="M 135 45 C 145 50, 145 70, 135 75" strokeWidth="2.5" />
+          {/* Hand drawn pencil circles */}
+          <path d="M 50 110 A 12 12 0 1 1 49.9 110" strokeWidth="1" strokeDasharray="2 2" />
+          <path d="M 110 115 A 15 15 0 1 1 109.9 115" strokeWidth="1" />
+        </svg>
+        <span className="font-handwriting text-xs text-ink-soft block text-center -mt-8">coffee & code</span>
+      </div>
+
+      {/* Flying paper rocket with loop-de-loop path in About Section */}
+      <div className="absolute top-[35%] left-[5%] pointer-events-none opacity-[0.08] dark:opacity-[0.03] text-clay rotate-[15deg] hidden lg:block">
+        <svg width="140" height="140" viewBox="0 0 120 120" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          {/* Dotted flying loop path */}
+          <path d="M 10 110 C 30 115, 60 100, 50 70 C 40 40, 80 50, 100 20" strokeDasharray="3 3" />
+          {/* Paper airplane/rocket at the end of path */}
+          <g transform="translate(95, 15) rotate(45)">
+            <path d="M 0 0 L -15 25 L -5 20 L 5 30 L 0 0 Z" fill="none" />
+            <path d="M 0 0 L -5 20" />
+          </g>
+          {/* Sketchy stars */}
+          <path d="M 20 50 L 26 56 M 26 50 L 20 56" strokeWidth="1" />
+          <path d="M 85 85 L 91 91 M 91 85 L 85 91" strokeWidth="1" />
+        </svg>
+        <span className="font-handwriting text-[11px] text-clay block ml-14 -mt-6">reaching new heights...</span>
+      </div>
+
+      {/* Dense Pencil scratches in background */}
+      <div className="absolute top-[60%] right-[3%] pointer-events-none opacity-[0.06] dark:opacity-[0.02] text-ink hidden md:block">
+        <svg width="120" height="80" viewBox="0 0 120 80" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round">
+          <path d="M 10 15 L 110 12 M 15 22 L 105 20 M 12 30 L 115 28 M 20 38 L 95 36 M 8 46 L 100 44" opacity="0.7" />
+          <path d="M 30 55 C 50 50, 70 60, 90 55" strokeDasharray="2 3" />
+        </svg>
+      </div>
+
+      {/* Pencil Scribble Underline in bottom corner */}
+      <div className="absolute bottom-[5%] left-[8%] pointer-events-none opacity-[0.07] dark:opacity-[0.02] text-ink hidden lg:block">
+        <svg width="200" height="80" viewBox="0 0 200 80" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+          <path d="M 10 25 C 60 15, 120 35, 190 20" />
+          <path d="M 15 32 C 70 24, 130 40, 185 28" opacity="0.6" />
+          {/* Hand drawn arrows pointing up to the cards */}
+          <path d="M 90 60 L 90 40 L 84 46 M 90 40 L 96 46" strokeWidth="1.5" />
+          <path d="M 150 65 L 150 45 L 144 51 M 150 45 L 156 51" strokeWidth="1.5" />
+        </svg>
+      </div>
+
+      <div className="container mx-auto px-6 md:px-12 relative z-10 max-w-6xl">
         <SectionHeading pretitle={t.aboutPretitle} title={t.aboutTitle} />
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mt-12 md:mt-16">
+        <div className="mt-12 sm:mt-16 space-y-12" data-aos="fade-up" data-aos-delay="100">
           
-          {/* Profile Card Col (Left 4 cols) */}
-          <div className="lg:col-span-4 w-full flex justify-center">
-            <div 
-              data-aos="fade-up"
-              data-aos-delay="100"
-              data-aos-duration="900"
-              className="p-6 sm:p-8 md:p-10 rounded-[2rem] relative flex flex-col items-center text-center w-full max-w-md lg:max-w-none group/card clay-card hover:shadow-xl hover:shadow-[#bf9d55]/5 transition-all duration-500"
-            >
-              {/* Decorative designer frame background elements */}
-              <div className="absolute inset-4 border border-[#bf9d55]/10 rounded-3xl pointer-events-none transition-all duration-500 group-hover/card:inset-3"></div>
-              <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-[#bf9d55]/25 pointer-events-none animate-pulse"></div>
-              <div className="absolute bottom-4 left-4 w-2 h-2 rounded-full bg-[#bf9d55]/25 pointer-events-none animate-pulse"></div>
-              
-              {/* Dual-ring designer profile wrapper */}
-              <div className="relative mt-2 mb-6">
-                {/* Outer decorative gold glow ring */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#bf9d55]/20 to-[#bf9d55]/5 rounded-full scale-110 blur-md opacity-70 group-hover/card:scale-115 transition-all duration-500"></div>
-                {/* Spin-tilting design ring */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#bf9d55]/30 to-stone-200/10 rounded-full scale-105 border border-[#bf9d55]/20 -rotate-6 transition-all duration-500 group-hover/card:rotate-6 group-hover/card:scale-110"></div>
-                {/* Main image container */}
-                <div className="relative w-36 h-36 p-1.5 bg-white border border-[#bf9d55]/15 shadow-xl rounded-full overflow-hidden flex items-center justify-center z-10 transition-transform duration-500 group-hover/card:scale-105">
-                  <img 
-                    src="/1774159206336.jpg" 
-                    alt="Mafrook Kuthpudeen" 
-                    className="w-full h-full object-cover rounded-full filter grayscale hover:grayscale-0 transition-all duration-700 ease-out"
-                  />
-                </div>
-              </div>
-  
-              <div className="z-10 flex flex-col items-center">
-                <span className="text-[9px] font-bold tracking-[0.25em] text-[#bf9d55] uppercase bg-[#bf9d55]/10 px-3.5 py-1 rounded-full mb-3.5 border border-[#bf9d55]/20 font-mono shadow-[0_2px_10px_rgba(191,157,85,0.06)]">
-                  {isRtl ? 'مهندس برمجيات' : 'SOFTWARE ENGINEER'}
-                </span>
-                <h3 className="font-serif text-2xl font-bold text-stone-900 tracking-tight leading-none group-hover/card:text-[#bf9d55] transition-colors duration-300">
-                  {isRtl ? 'مفروق كوتوبودين' : 'Mafrook Kuthpudeen'}
-                </h3>
-                <p className="text-[#bf9d55] text-xs font-semibold mt-2.5 tracking-wider uppercase font-sans">
-                  {isRtl ? 'تطوير كامل المواصفات' : 'Full-Stack Development'}
-                </p>
-              </div>
-              
-              {/* Bento Grid Stats block */}
-              <div className="grid grid-cols-3 gap-2.5 w-full border-t border-stone-100 pt-5 mt-6 mb-6 z-10">
-                <div className="clay-bubble rounded-2xl py-3.5 px-1.5 group/stat hover:border-[#bf9d55]/30 hover:scale-[1.05] active:scale-95 transition-all duration-300 flex flex-col items-center justify-center cursor-pointer select-none">
-                  <p className="font-serif font-black text-[#bf9d55] text-sm sm:text-base leading-none">
-                    {totalExp.years} {t.expYears}
-                  </p>
-                  <p className="text-[8px] text-stone-400 uppercase tracking-widest font-bold mt-2 text-center">
-                    {isRtl ? 'الخبرة' : 'Experience'}
-                  </p>
-                </div>
-                <div className="clay-bubble rounded-2xl py-3.5 px-1.5 group/stat hover:border-[#bf9d55]/30 hover:scale-[1.05] active:scale-95 transition-all duration-300 flex flex-col items-center justify-center cursor-pointer select-none">
-                  <p className="font-serif font-black text-[#bf9d55] text-sm sm:text-base leading-none">MERN</p>
-                  <p className="text-[8px] text-stone-400 uppercase tracking-widest font-bold mt-2 text-center">
-                    {isRtl ? 'التقنيات' : 'Core Stack'}
-                  </p>
-                </div>
-                <div className="clay-bubble rounded-2xl py-3.5 px-1.5 group/stat hover:border-[#bf9d55]/30 hover:scale-[1.05] active:scale-95 transition-all duration-300 flex flex-col items-center justify-center cursor-pointer select-none">
-                  <p className="font-serif font-black text-[#bf9d55] text-sm sm:text-base leading-none">TS / JS</p>
-                  <p className="text-[8px] text-stone-400 uppercase tracking-widest font-bold mt-2 text-center">
-                    {isRtl ? 'اللغة' : 'Language'}
-                  </p>
-                </div>
-              </div>
-  
-              {/* Professional Actions Suite */}
-              <div className="w-full space-y-2.5 z-10">
-                {/* Primary action row with both options balanced side-by-side */}
-                <div className="grid grid-cols-2 gap-2">
-                  <button 
-                    onClick={() => setIsResumeOpen(true)}
-                    className="py-2.5 bg-stone-900 hover:bg-stone-800 active:scale-95 active:bg-stone-950 text-white font-sans font-semibold text-[10px] sm:text-xs rounded-xl tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-1.5 group/btn shadow-sm hover:shadow cursor-pointer select-none"
-                  >
-                    <FileText size={12} className="text-[#bf9d55] group-hover/btn:scale-105 transition-transform duration-300" />
-                    <span>{t.resume}</span>
-                  </button>
-  
-                  <a 
-                    href="/resume.pdf" 
-                    download="Mafrook_Kuthpudeen_Resume.pdf"
-                    className="py-2.5 bg-white border border-stone-200 hover:border-stone-400 active:scale-95 active:bg-stone-50 text-stone-700 hover:text-stone-900 font-sans font-semibold text-[10px] sm:text-xs rounded-xl tracking-wider uppercase transition-all duration-300 flex items-center justify-center gap-1.5 group/down hover:shadow-sm select-none"
-                  >
-                    <Download size={12} className="text-[#bf9d55] group-hover/down:translate-y-0.5 transition-transform duration-300" />
-                    <span>Resume (PDF)</span>
-                  </a>
-                </div>
-  
-                {/* Secondary copy action */}
-                <button 
-                  onClick={handleCopyEmail}
-                  className="w-full py-2 bg-transparent border border-dashed border-stone-200 hover:border-[#bf9d55]/40 hover:bg-[#bf9d55]/5 active:scale-[0.98] active:bg-[#bf9d55]/10 text-stone-600 hover:text-[#bf9d55] font-sans font-semibold text-[10px] rounded-xl tracking-wider uppercase transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer select-none"
-                >
-                  {copiedEmail ? <Check size={11} className="text-green-600" /> : <Mail size={11} className="text-stone-400" />}
-                  <span>{copiedEmail ? t.emailCopied : t.copyEmail}</span>
-                </button>
-              </div>
-            </div>
+          {/* Main Bio and Action bar */}
+          <div className="space-y-6 max-w-4xl">
+            <p className="text-ink-soft text-base md:text-lg font-light leading-relaxed">
+              {t.aboutBio}
+            </p>
           </div>
 
-          {/* Simplified Professional Summary Col (Right 8 cols) */}
-          <div 
-            data-aos="fade-up"
-            data-aos-delay="250"
-            data-aos-duration="900"
-            className="lg:col-span-8 flex flex-col justify-center lg:pl-8 space-y-8"
-          >
-            <div className="space-y-6">
-              <p className="text-stone-600 text-base md:text-lg font-light leading-relaxed">
-                {t.aboutBio}
-              </p>
-            </div>
-
-            {/* Highly efficient high-impact summary metric list with internal staggering */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
-              <motion.div 
-                data-aos="fade-up"
-                data-aos-delay="350"
-                data-aos-duration="800"
-                className="group clay-card p-5 rounded-2xl cursor-pointer select-none"
-                whileHover={{ scale: 1.01 }}
-                whileTap={{ scale: 0.97 }}
-              >
-                <div className="w-9 h-9 rounded-xl bg-[#bf9d55]/10 border border-[#bf9d55]/20 flex items-center justify-center text-[#bf9d55] shadow-sm mb-4 group-hover:scale-105 transition-transform">
-                  <Terminal size={16} />
-                </div>
-                <h4 className="font-sans font-bold text-stone-900 text-sm font-semibold">{t.card1Title}</h4>
-                <p className="text-stone-500 text-xs mt-1.5 leading-relaxed">
-                  {t.card1Desc}
-                </p>
-              </motion.div>
-              
-              <motion.div 
-                data-aos="fade-up"
-                data-aos-delay="450"
-                data-aos-duration="800"
-                className="group clay-card p-5 rounded-2xl cursor-pointer select-none"
-                whileHover={{ scale: 1.01 }}
-                whileTap={{ scale: 0.97 }}
-              >
-                <div className="w-9 h-9 rounded-xl bg-[#bf9d55]/10 border border-[#bf9d55]/20 flex items-center justify-center text-[#bf9d55] shadow-sm mb-4 group-hover:scale-105 transition-transform">
-                  <ShieldCheck size={16} />
-                </div>
-                <h4 className="font-sans font-bold text-stone-900 text-sm font-semibold">{t.card2Title}</h4>
-                <p className="text-stone-500 text-xs mt-1.5 leading-relaxed">
-                  {t.card2Desc}
-                </p>
-              </motion.div>
-
-              <motion.div 
-                data-aos="fade-up"
-                data-aos-delay="550"
-                data-aos-duration="800"
-                className="group clay-card p-5 rounded-2xl cursor-pointer select-none"
-                whileHover={{ scale: 1.01 }}
-                whileTap={{ scale: 0.97 }}
-              >
-                <div className="w-9 h-9 rounded-xl bg-[#bf9d55]/10 border border-[#bf9d55]/20 flex items-center justify-center text-[#bf9d55] shadow-sm mb-4 group-hover:scale-105 transition-transform">
-                  <Sparkles size={16} />
-                </div>
-                <h4 className="font-sans font-bold text-stone-900 text-sm font-semibold">{t.card3Title}</h4>
-                <p className="text-stone-500 text-xs mt-1.5 leading-relaxed">
-                  {t.card3Desc}
-                </p>
-              </motion.div>
-            </div>
-
-            {/* Bottom elegant tag row */}
-            <div 
-              data-aos="fade-up"
-              data-aos-delay="650"
-              data-aos-duration="800"
-              className="flex flex-wrap gap-2.5 pt-4 border-t border-stone-100"
+          {/* Pinned Note Cards - Alternating rotations, with push pins */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4">
+            
+            {/* Card 1 - Pinned with clay pin */}
+            <PhysicalCard 
+              className="p-5 select-none"
+              style={{ rotate: '-3deg' }}
+              tiltRange={6}
             >
-              <span className="text-[10px] font-bold text-stone-500 tracking-wider uppercase bg-[#F9F8F4] border border-stone-200/50 px-3.5 py-1.5 rounded-full hover:border-[#bf9d55]/30 active:scale-95 transition-all cursor-pointer select-none">
-                #React.js
-              </span>
-              <span className="text-[10px] font-bold text-stone-500 tracking-wider uppercase bg-[#F9F8F4] border border-stone-200/50 px-3.5 py-1.5 rounded-full hover:border-[#bf9d55]/30 active:scale-95 transition-all cursor-pointer select-none">
-                #Node.js / Express
-              </span>
-              <span className="text-[10px] font-bold text-stone-500 tracking-wider uppercase bg-[#F9F8F4] border border-stone-200/50 px-3.5 py-1.5 rounded-full hover:border-[#bf9d55]/30 active:scale-95 transition-all cursor-pointer select-none">
-                #MongoDB / Mongoose
-              </span>
-              <span className="text-[10px] font-bold text-stone-500 tracking-wider uppercase bg-[#F9F8F4] border border-stone-200/50 px-3.5 py-1.5 rounded-full hover:border-[#bf9d55]/30 active:scale-95 transition-all cursor-pointer select-none">
-                #React Query
-              </span>
-              <span className="text-[10px] font-bold text-stone-500 tracking-wider uppercase bg-[#F9F8F4] border border-stone-200/50 px-3.5 py-1.5 rounded-full hover:border-[#bf9d55]/30 active:scale-95 transition-all cursor-pointer select-none">
-                #Prompt Engineering
-              </span>
-              <span className="text-[10px] font-bold text-stone-500 tracking-wider uppercase bg-[#F9F8F4] border border-stone-200/50 px-3.5 py-1.5 rounded-full hover:border-[#bf9d55]/30 active:scale-95 transition-all cursor-pointer select-none">
-                #AI Architectures
-              </span>
-            </div>
+              <PushPin colorClass="pin-clay" />
+              <div className="w-8 h-8 rounded bg-clay/10 flex items-center justify-center text-clay mb-3">
+                <Terminal size={15} />
+              </div>
+              <h4 className="font-sans font-bold text-ink text-sm uppercase tracking-wider mb-1">{t.card1Title}</h4>
+              <p className="text-ink-soft text-xs leading-relaxed font-light">
+                {t.card1Desc}
+              </p>
+            </PhysicalCard>
+            
+            {/* Card 2 - Pinned with olive pin */}
+            <PhysicalCard 
+              className="p-5 select-none"
+              style={{ rotate: '2deg' }}
+              tiltRange={6}
+            >
+              <PushPin colorClass="pin-olive" />
+              <div className="w-8 h-8 rounded bg-olive/10 flex items-center justify-center text-olive mb-3">
+                <ShieldCheck size={15} />
+              </div>
+              <h4 className="font-sans font-bold text-ink text-sm uppercase tracking-wider mb-1">{t.card2Title}</h4>
+              <p className="text-ink-soft text-xs leading-relaxed font-light">
+                {t.card2Desc}
+              </p>
+            </PhysicalCard>
+
+            {/* Card 3 - Pinned with denim pin */}
+            <PhysicalCard 
+              className="p-5 select-none"
+              style={{ rotate: '-1.8deg' }}
+              tiltRange={6}
+            >
+              <PushPin colorClass="pin-denim" />
+              <div className="w-8 h-8 rounded bg-denim/10 flex items-center justify-center text-denim mb-3">
+                <Sparkles size={15} />
+              </div>
+              <h4 className="font-sans font-bold text-ink text-sm uppercase tracking-wider mb-1">{t.card3Title}</h4>
+              <p className="text-ink-soft text-xs leading-relaxed font-light">
+                {t.card3Desc}
+              </p>
+            </PhysicalCard>
           </div>
         </div>
       </div>
     </section>
   );
 };
+
+export default AboutSection;
