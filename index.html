@@ -3,61 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>portfolio-mafrook</title>
+    <title>Mafrook K · Fullstack Engineer</title>
+    <meta name="description" content="Portfolio of Mafrook Kuthpudeen — fullstack engineer. Projects, experience, developer prompt library and blog." />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-    <script>
-      window.addEventListener('error', function(e) {
-        if (e.message && e.message.includes('fetch')) {
-          console.error("CATGHT FETCH TRACE:", e.error && e.error.stack);
-          // Optional: Display it on screen
-          const div = document.createElement('div');
-          div.style.position = 'fixed';
-          div.style.zIndex = '999999';
-          div.style.background = 'white';
-          div.style.color = 'red';
-          div.style.padding = '20px';
-          div.innerText = e.error ? e.error.stack : e.message;
-          document.body.appendChild(div);
-        }
-      });
-      // Mock fetch setter safely?
-      try {
-        const desc = Object.getOwnPropertyDescriptor(window, 'fetch');
-        if (desc && desc.get && !desc.set) {
-          if (desc.configurable) {
-             const origGet = desc.get;
-             Object.defineProperty(window, 'fetch', {
-                 get: origGet,
-                 set: function(val) { console.warn("Something tried to set fetch!"); },
-                 configurable: true
-             });
-          } else {
-             console.warn("fetch is not configurable!");
-          }
-        }
-      } catch (e) {}
-    </script>
     <style>
       html {
         scroll-behavior: smooth;
         scroll-padding-top: 100px;
       }
       body {
-        background-color: #F9F8F4;
-        color: #1a1a1a;
-      }
-      @media print {
-        nav, footer, button {
-          display: none !important;
-        }
+        background-color: #ede7dc;
+        color: #2e2a24;
       }
     </style>
-<link rel="stylesheet" href="/index.css">
-</head>
+  </head>
   <body>
     <div id="root"></div>
-  <script type="module" src="/index.tsx"></script>
-</body>
+    <script type="module" src="/index.tsx"></script>
+  </body>
 </html>
