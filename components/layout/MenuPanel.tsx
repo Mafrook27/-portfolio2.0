@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Eye, Download, Phone, Sun, Moon, Terminal, PenLine, User, Wrench, Briefcase, FolderGit2, Award } from 'lucide-react';
+import { Eye, Download, Phone, Sun, Moon, Terminal, PenLine, User, FolderGit2 } from 'lucide-react';
 import { socialLinks } from '../../lib/data';
 import { useLanguage } from '../../context/LanguageContext';
 import { useTheme } from '../../context/ThemeContext';
@@ -34,17 +34,11 @@ export const MenuPanel: React.FC<MenuPanelProps> = ({ setMenuOpen, setIsResumeOp
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const sectionItems = [
-    { label: t.about, hash: '#about', icon: User },
-    { label: t.skills, hash: '#skills', icon: Wrench },
-    { label: t.experience, hash: '#experience', icon: Briefcase },
-    { label: t.projects, hash: '#projects', icon: FolderGit2 },
-    { label: t.milestones, hash: '#certifications', icon: Award },
-  ];
-
-  const pageItems = [
-    { label: t.prompts, to: '/prompts', icon: Terminal, note: 'AI prompt library' },
-    { label: t.blog, to: '/blog', icon: PenLine, note: 'Notes & thoughts' },
+  const navItems = [
+    { label: t.projects, kind: 'hash' as const, value: '#projects', icon: FolderGit2, note: 'Featured work' },
+    { label: t.blog, kind: 'page' as const, value: '/blog', icon: PenLine, note: 'Notes & thoughts' },
+    { label: t.prompts, kind: 'page' as const, value: '/prompts', icon: Terminal, note: 'AI prompt library' },
+    { label: t.about, kind: 'hash' as const, value: '#about', icon: User, note: 'Profile intro' },
   ];
 
   return (
@@ -69,40 +63,36 @@ export const MenuPanel: React.FC<MenuPanelProps> = ({ setMenuOpen, setIsResumeOp
         role="dialog"
         aria-label={t.menu}
       >
-        {/* Section links (home anchors) */}
+        {/* Main navigation: keep only the most important destinations visible. */}
         <p className="text-[9px] font-mono font-bold uppercase tracking-[0.2em] text-ink-soft/50 mb-2 px-1">
           {t.menu}
         </p>
-        <div className="grid grid-cols-2 gap-1.5">
-          {sectionItems.map((item) => (
-            <a
-              key={item.hash}
-              href={onHome ? item.hash : `/${item.hash}`}
-              onClick={close}
-              className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-[12px] font-bold text-ink hover:bg-paper-2 hover:text-clay transition-colors"
-            >
-              <item.icon size={13} className="text-clay shrink-0" />
-              {item.label}
-            </a>
-          ))}
-        </div>
+        <div className="grid gap-1.5">
+          {navItems.map((item) => {
+            const isActive = item.kind === 'page' && pathname.startsWith(item.value);
+            const className = `flex items-center gap-2.5 px-2.5 py-2 rounded-lg transition-colors ${
+              isActive ? 'bg-paper-2 text-clay' : 'text-ink hover:bg-paper-2 hover:text-clay'
+            }`;
 
-        {/* Pages */}
-        <div className="mt-3 pt-3 border-t border-dashed border-line grid gap-1.5">
-          {pageItems.map((item) => (
-            <Link
-              key={item.to}
-              to={item.to}
-              onClick={close}
-              className={`flex items-center gap-2.5 px-2.5 py-2 rounded-lg transition-colors ${
-                pathname.startsWith(item.to) ? 'bg-paper-2 text-clay' : 'text-ink hover:bg-paper-2 hover:text-clay'
-              }`}
-            >
-              <item.icon size={14} className="text-clay shrink-0" />
-              <span className="text-[12px] font-bold">{item.label}</span>
-              <span className="text-[10px] text-ink-soft/60 ml-auto">{item.note}</span>
-            </Link>
-          ))}
+            return item.kind === 'hash' ? (
+              <a
+                key={item.value}
+                href={onHome ? item.value : `/${item.value}`}
+                onClick={close}
+                className={className}
+              >
+                <item.icon size={14} className="text-clay shrink-0" />
+                <span className="text-[12px] font-bold">{item.label}</span>
+                <span className="text-[10px] text-ink-soft/60 ml-auto">{item.note}</span>
+              </a>
+            ) : (
+              <Link key={item.value} to={item.value} onClick={close} className={className}>
+                <item.icon size={14} className="text-clay shrink-0" />
+                <span className="text-[12px] font-bold">{item.label}</span>
+                <span className="text-[10px] text-ink-soft/60 ml-auto">{item.note}</span>
+              </Link>
+            );
+          })}
         </div>
 
         {/* Resume — view / download / contact */}
