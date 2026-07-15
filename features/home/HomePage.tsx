@@ -82,6 +82,7 @@ export const HomePage: React.FC = () => {
     return () => clearTimeout(timer);
   }, [ecoMode, language]);
 
+
   const handleCopyEmail = () => {
     navigator.clipboard.writeText('Mafrooktkc@gmail.com');
     setCopiedEmail(true);
