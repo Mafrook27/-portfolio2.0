@@ -3,11 +3,8 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 import { HeroSection } from './HeroSection';
-import { AboutSection } from './AboutSection';
-import { SkillsSection } from './SkillsSection';
 import { ExperienceSection } from './ExperienceSection';
 import { ProjectsSection } from './ProjectsSection';
-import { CertificationsSection } from './CertificationsSection';
 
 import { useLanguage } from '../../context/LanguageContext';
 import { usePerformance } from '../../context/PerformanceContext';
@@ -47,8 +44,7 @@ const calculateTotalExperience = () => {
 export const HomePage: React.FC = () => {
   const { ecoMode } = usePerformance();
   const { language } = useLanguage();
-  const { setResumeOpen, chromeHidden, pulseChromeHidden } = useUi();
-  const [copiedEmail, setCopiedEmail] = useState(false);
+  const { setResumeOpen, chromeHidden } = useUi();
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
 
   // Dynamic role ticker
@@ -82,11 +78,7 @@ export const HomePage: React.FC = () => {
     return () => clearTimeout(timer);
   }, [ecoMode, language]);
 
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText('Mafrooktkc@gmail.com');
-    setCopiedEmail(true);
-    setTimeout(() => setCopiedEmail(false), 2000);
-  };
+
 
   const totalExp = calculateTotalExperience();
 
@@ -95,16 +87,8 @@ export const HomePage: React.FC = () => {
       <HeroSection setIsResumeOpen={setResumeOpen} currentRoleIndex={currentRoleIndex} roles={roles} />
 
       <main>
-        <AboutSection
-          setIsResumeOpen={setResumeOpen}
-          handleCopyEmail={handleCopyEmail}
-          copiedEmail={copiedEmail}
-          totalExp={totalExp}
-        />
-        <SkillsSection />
         <ExperienceSection totalExp={totalExp} />
         <ProjectsSection hideNavbar={chromeHidden} />
-        <CertificationsSection onNavInteraction={pulseChromeHidden} />
       </main>
     </>
   );
