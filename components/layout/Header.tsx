@@ -29,10 +29,6 @@ export const Header: React.FC<HeaderProps> = ({
 
   const navLinks = [
     { label: t.about, kind: 'hash' as const, value: '#about' },
-    { label: t.skills, kind: 'hash' as const, value: '#skills' },
-    { label: t.experience, kind: 'hash' as const, value: '#experience' },
-    { label: t.projects, kind: 'hash' as const, value: '#projects' },
-    { label: t.milestones, kind: 'hash' as const, value: '#certifications' },
     { label: t.prompts, kind: 'page' as const, value: '/prompts' },
     { label: t.blog, kind: 'page' as const, value: '/blog' },
   ];
