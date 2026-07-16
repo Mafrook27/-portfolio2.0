@@ -1,8 +1,8 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Search, CornerDownLeft, FileText, FolderGit2, Wrench, Award, Terminal, PenLine, LayoutGrid } from 'lucide-react';
-import { projects, skills, certifications, experience } from '../../lib/data';
+import { Search, CornerDownLeft, FileText, FolderGit2, Terminal, PenLine } from 'lucide-react';
+import { projects } from '../../lib/data';
 import { useCollection } from '../../lib/content';
 import { useLanguage } from '../../context/LanguageContext';
 
@@ -20,11 +20,7 @@ interface SearchItem {
 }
 
 const groupIcons: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
-  Sections: LayoutGrid,
   Projects: FolderGit2,
-  Skills: Wrench,
-  Certifications: Award,
-  Experience: FileText,
   Prompts: Terminal,
   Blog: PenLine,
 };
@@ -41,23 +37,6 @@ export const SearchOverlay: React.FC<SearchOverlayProps> = ({ onClose }) => {
   const index = useMemo<SearchItem[]>(() => {
     const items: SearchItem[] = [];
 
-    const sections = [
-      { id: 'about', label: t.about },
-      { id: 'skills', label: t.skills },
-      { id: 'experience', label: t.experience },
-      { id: 'projects', label: t.projects },
-      { id: 'certifications', label: t.milestones },
-    ];
-    sections.forEach((section) =>
-      items.push({
-        id: `section-${section.id}`,
-        group: 'Sections',
-        title: section.label,
-        href: `/#${section.id}`,
-        keywords: section.label.toLowerCase(),
-      }),
-    );
-
     projects.forEach((project, i) =>
       items.push({
         id: `project-${i}`,
@@ -66,40 +45,6 @@ export const SearchOverlay: React.FC<SearchOverlayProps> = ({ onClose }) => {
         subtitle: project.technologies.join(' · '),
         href: '/#projects',
         keywords: `${project.title} ${project.desc} ${project.technologies.join(' ')}`.toLowerCase(),
-      }),
-    );
-
-    Object.values(skills)
-      .flat()
-      .forEach((skill, i) =>
-        items.push({
-          id: `skill-${i}`,
-          group: 'Skills',
-          title: skill.label,
-          href: '/#skills',
-          keywords: skill.label.toLowerCase(),
-        }),
-      );
-
-    certifications.forEach((cert, i) =>
-      items.push({
-        id: `cert-${i}`,
-        group: 'Certifications',
-        title: cert.title,
-        subtitle: cert.description.slice(0, 70),
-        href: '/#certifications',
-        keywords: `${cert.title} ${cert.description}`.toLowerCase(),
-      }),
-    );
-
-    experience.forEach((exp, i) =>
-      items.push({
-        id: `exp-${i}`,
-        group: 'Experience',
-        title: `${exp.role} · ${exp.company}`,
-        subtitle: exp.period,
-        href: '/#experience',
-        keywords: `${exp.role} ${exp.company} ${exp.points.join(' ')}`.toLowerCase(),
       }),
     );
 
@@ -126,7 +71,7 @@ export const SearchOverlay: React.FC<SearchOverlayProps> = ({ onClose }) => {
     );
 
     return items;
-  }, [t, blogEntries, promptEntries]);
+  }, [blogEntries, promptEntries]);
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -204,7 +149,7 @@ export const SearchOverlay: React.FC<SearchOverlayProps> = ({ onClose }) => {
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Search projects, skills, prompts, blog…"
+            placeholder="Search projects, prompts, blog…"
             className="flex-1 bg-transparent outline-none text-sm text-ink placeholder:text-ink-soft/50 font-medium"
           />
           <button

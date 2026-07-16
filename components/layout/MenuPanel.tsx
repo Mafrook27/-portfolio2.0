@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Eye, Download, Phone, Sun, Moon, Terminal, PenLine, User, Wrench, Briefcase, FolderGit2, Award } from 'lucide-react';
+import { Eye, Download, Phone, Sun, Moon, Terminal, PenLine, User } from 'lucide-react';
 import { socialLinks } from '../../lib/data';
 import { useLanguage } from '../../context/LanguageContext';
 import { useTheme } from '../../context/ThemeContext';
@@ -36,10 +36,6 @@ export const MenuPanel: React.FC<MenuPanelProps> = ({ setMenuOpen, setIsResumeOp
 
   const navItems = [
     { label: t.about, kind: 'hash' as const, value: '#about', icon: User, note: 'Profile intro' },
-    { label: t.skills, kind: 'hash' as const, value: '#skills', icon: Wrench, note: 'Tech stack' },
-    { label: t.experience, kind: 'hash' as const, value: '#experience', icon: Briefcase, note: 'Work history' },
-    { label: t.projects, kind: 'hash' as const, value: '#projects', icon: FolderGit2, note: 'Featured work' },
-    { label: t.milestones, kind: 'hash' as const, value: '#certifications', icon: Award, note: 'Certifications' },
     { label: t.prompts, kind: 'page' as const, value: '/prompts', icon: Terminal, note: 'AI prompt library' },
     { label: t.blog, kind: 'page' as const, value: '/blog', icon: PenLine, note: 'Notes & thoughts' },
   ];
