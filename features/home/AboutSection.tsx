@@ -6,6 +6,7 @@ import { useLanguage } from '../../context/LanguageContext';
 import { useTheme } from '../../context/ThemeContext';
 import { PushPin } from '../../components/ui/PushPin';
 import { PhysicalCard } from '../../components/ui/PhysicalCard';
+import { Reveal } from '../../components/ui/Reveal';
 
 interface AboutSectionProps {
   setIsResumeOpen: (open: boolean) => void;
@@ -97,7 +98,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
       <div className="container mx-auto px-6 md:px-12 relative z-10 max-w-6xl">
         <SectionHeading pretitle={t.aboutPretitle} title={t.aboutTitle} />
         
-        <div className="mt-12 sm:mt-16 space-y-12" data-aos="fade-up" data-aos-delay="100">
+        <Reveal className="mt-12 sm:mt-16 space-y-12" delay={0.1}>
           
           {/* Main Bio and Action bar */}
           <div className="space-y-6 max-w-4xl">
@@ -157,7 +158,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
               </p>
             </PhysicalCard>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

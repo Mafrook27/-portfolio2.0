@@ -10,8 +10,6 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.1",
-    "@types/aos": "^3.0.8",
-    "aos": "^2.3.4",
     "framer-motion": "^12.23.24",
     "highlight.js": "^11.11.1",
     "lucide-react": "^0.553.0",

@@ -15,7 +15,7 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({ pretitle, title 
     <motion.div 
       initial={{ opacity: 0, y: 15 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
       className="mb-14 sm:mb-20 flex flex-col items-center text-center relative pt-8"
     >

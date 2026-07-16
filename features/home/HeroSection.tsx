@@ -6,6 +6,7 @@ import { useLanguage } from '../../context/LanguageContext';
 import { useTheme } from '../../context/ThemeContext';
 import { useUi } from '../../context/UiContext';
 import { PhysicalCard } from '../../components/ui/PhysicalCard';
+import { Reveal } from '../../components/ui/Reveal';
 
 interface HeroSectionProps {
   setIsResumeOpen: (open: boolean) => void;
@@ -286,7 +287,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ setIsResumeOpen, curre
         </div>
 
         {/* Realistic Desk Search Bar Mockup */}
-        <div className="mt-16 flex justify-center w-full" data-aos="fade-up" data-aos-delay="200">
+        <Reveal className="mt-16 flex justify-center w-full" delay={0.2}>
           <div className="relative w-full max-w-xl group">
             <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-ink-soft group-focus-within:text-clay transition-colors">
               <Search size={16} />
@@ -304,7 +305,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ setIsResumeOpen, curre
               </kbd>
             </div>
           </div>
-        </div>
+        </Reveal>
 
       </div>
     </header>

@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 
 import { HeroSection } from './HeroSection';
 import { AboutSection } from './AboutSection';
@@ -9,8 +7,6 @@ import { ExperienceSection } from './ExperienceSection';
 import { ProjectsSection } from './ProjectsSection';
 import { CertificationsSection } from './CertificationsSection';
 
-import { useLanguage } from '../../context/LanguageContext';
-import { usePerformance } from '../../context/PerformanceContext';
 import { useUi } from '../../context/UiContext';
 import { experience } from '../../lib/data';
 
@@ -45,8 +41,6 @@ const calculateTotalExperience = () => {
 };
 
 export const HomePage: React.FC = () => {
-  const { ecoMode } = usePerformance();
-  const { language } = useLanguage();
   const { setResumeOpen, chromeHidden, pulseChromeHidden } = useUi();
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
@@ -58,29 +52,6 @@ export const HomePage: React.FC = () => {
     }, 4000);
     return () => clearInterval(roleInterval);
   }, []);
-
-  // Scroll-triggered animation initialization
-  useEffect(() => {
-    const isMobileDevice = window.innerWidth < 768;
-    if (ecoMode) {
-      AOS.init({ disable: true });
-    } else {
-      AOS.init({
-        duration: isMobileDevice ? 800 : 1100,
-        once: false,
-        mirror: false,
-        easing: 'ease-out-quart',
-        offset: isMobileDevice ? 20 : 80,
-        disable: false,
-      });
-      AOS.refresh();
-    }
-
-    const timer = setTimeout(() => {
-      if (!ecoMode) AOS.refresh();
-    }, 150);
-    return () => clearTimeout(timer);
-  }, [ecoMode, language]);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText('Mafrooktkc@gmail.com');
