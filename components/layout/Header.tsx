@@ -27,17 +27,14 @@ export const Header: React.FC<HeaderProps> = ({
   const { pathname } = useLocation();
   const onHome = pathname === '/';
 
-  const sectionLinks = [
-    { label: t.about, hash: '#about' },
-    { label: t.skills, hash: '#skills' },
-    { label: t.experience, hash: '#experience' },
-    { label: t.projects, hash: '#projects' },
-    { label: t.milestones, hash: '#certifications' },
-  ];
-
-  const pageLinks = [
-    { label: t.prompts, to: '/prompts' },
-    { label: t.blog, to: '/blog' },
+  const navLinks = [
+    { label: t.about, kind: 'hash' as const, value: '#about' },
+    { label: t.skills, kind: 'hash' as const, value: '#skills' },
+    { label: t.experience, kind: 'hash' as const, value: '#experience' },
+    { label: t.projects, kind: 'hash' as const, value: '#projects' },
+    { label: t.milestones, kind: 'hash' as const, value: '#certifications' },
+    { label: t.prompts, kind: 'page' as const, value: '/prompts' },
+    { label: t.blog, kind: 'page' as const, value: '/blog' },
   ];
 
   return (
@@ -77,26 +74,25 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Desktop navigation */}
         <div className="hidden lg:flex items-center gap-5 text-[13px] font-semibold text-ink-soft">
           <div className="flex items-center gap-4">
-            {onHome &&
-              sectionLinks.map((link) => (
-                <a key={link.hash} href={link.hash} className="hover:text-clay transition-colors">
+            {navLinks.map((link) =>
+              link.kind === 'hash' ? (
+                <a
+                  key={link.value}
+                  href={onHome ? link.value : `/${link.value}`}
+                  className="hover:text-clay transition-colors"
+                >
                   {link.label}
                 </a>
-              ))}
-            {!onHome && (
-              <Link to="/" className="hover:text-clay transition-colors">
-                {t.about}
-              </Link>
+              ) : (
+                <Link
+                  key={link.value}
+                  to={link.value}
+                  className={`transition-colors ${pathname.startsWith(link.value) ? 'text-clay' : 'hover:text-clay'}`}
+                >
+                  {link.label}
+                </Link>
+              ),
             )}
-            {pageLinks.map((link) => (
-              <Link
-                key={link.to}
-                to={link.to}
-                className={`transition-colors ${pathname.startsWith(link.to) ? 'text-clay' : 'hover:text-clay'}`}
-              >
-                {link.label}
-              </Link>
-            ))}
           </div>
 
           <span className="h-4 w-px bg-line"></span>
