@@ -6,8 +6,14 @@
     "icon": "BookOpen"
   },
   {
-    "title": "AWS Academy: Cloud Foundations",
-    "description": "AWS accreditation covering virtualized cloud architectures, managed databases, security access roles (IAM), and highly-scalable hosting environments.",
+    "title": "AWS Cloud Practitioner",
+    "description": "In progress via Udemy, covering core AWS services, cloud architecture fundamentals, and security/IAM basics.",
+    "url": "https://www.linkedin.com/in/k-mafrook/",
+    "icon": "ShieldCheck"
+  },
+  {
+    "title": "AWS Fundamentals",
+    "description": "Completed as part of college coursework, covering foundational AWS cloud concepts.",
     "url": "https://www.linkedin.com/in/k-mafrook/",
     "icon": "ShieldCheck"
   },

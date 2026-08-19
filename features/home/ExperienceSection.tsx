@@ -133,8 +133,8 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ totalExp }
           tags: ["MERN Stack", "React Query", "REST APIs"]
         },
         {
-          role: "Technischer Trainer",
-          company: "Livewire Institutions",
+          role: "Technischer Trainer & Freiberuflicher Entwickler",
+          company: "a1ideaz",
           location: "Mayiladuthurai, Indien",
           period: "Okt. 2024 - Feb. 2025",
           points: [
@@ -161,8 +161,8 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({ totalExp }
           tags: ["MERN Stack", "React Query", "REST APIs"]
         },
         {
-          role: "مدرب تقني",
-          company: "Livewire Institutions",
+          role: "مدرب تقني ومطور مستقل",
+          company: "a1ideaz",
           location: "مايلادوثوراي، الهند",
           period: "أكتوبر ٢٠٢٤ - فبراير ٢٠٢٥",
           points: [
